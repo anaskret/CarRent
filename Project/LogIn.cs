@@ -30,12 +30,31 @@ namespace Project
             if (Validate(tbLogin.Text, tbPassword.Text))
             {
                 this.Hide();
-                CarMenu m = new CarMenu();
+                CarList m = new CarList();
                 m.Show();
             }
             else
                 MessageBox.Show("Wrong password or login");
 
+        }
+
+        private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbShowHide.Checked)
+            {
+                tbPassword.UseSystemPasswordChar = false;
+                cbShowHide.Text = "Hide Password";
+            }
+            else
+            {
+                tbPassword.UseSystemPasswordChar = true;
+                cbShowHide.Text = "Show Password";
+            }
         }
     }
 }

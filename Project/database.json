@@ -1,0 +1,18 @@
+﻿{
+  "cars": [
+    {
+      "licensePlate": "PWL 14141",
+      "brand": "Mazda",
+      "model": "CX3",
+      "colour": "Black",
+      "mileage": "14000",
+      "productionYear": "2018",
+      "engine": "Jakis silnik",
+      "fuelType": "Diesel",
+      "transmission": "7.4",
+      "pricePerDay": "99.99",
+      "isDamaged": "false",
+      "isAway": "false"
+    }
+  ]
+}
