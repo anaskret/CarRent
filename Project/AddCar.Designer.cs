@@ -43,21 +43,30 @@
             this.tbYear = new System.Windows.Forms.TextBox();
             this.lblTransmission = new System.Windows.Forms.Label();
             this.lblFuelType = new System.Windows.Forms.Label();
-            this.cbxFuelType = new System.Windows.Forms.ComboBox();
             this.lblCaretaker = new System.Windows.Forms.Label();
             this.cbxCaretaker = new System.Windows.Forms.ComboBox();
             this.lblColor = new System.Windows.Forms.Label();
             this.cbxTransmission = new System.Windows.Forms.ComboBox();
             this.tbColor = new System.Windows.Forms.TextBox();
             this.btnDate = new System.Windows.Forms.Button();
+            this.rbtnDiesel = new System.Windows.Forms.RadioButton();
+            this.rbtnGasoline = new System.Windows.Forms.RadioButton();
+            this.rbtnGas = new System.Windows.Forms.RadioButton();
+            this.lblPricePerDay = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbxIsDamaged = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.lblMileage = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(556, 678);
+            this.btnBack.Location = new System.Drawing.Point(180, 336);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(151, 71);
+            this.btnBack.Size = new System.Drawing.Size(161, 71);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Back To Menu";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -67,7 +76,7 @@
             // 
             this.lblAddData.AutoSize = true;
             this.lblAddData.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAddData.Location = new System.Drawing.Point(556, 9);
+            this.lblAddData.Location = new System.Drawing.Point(289, 9);
             this.lblAddData.Name = "lblAddData";
             this.lblAddData.Size = new System.Drawing.Size(131, 37);
             this.lblAddData.TabIndex = 1;
@@ -182,29 +191,17 @@
             // 
             this.lblFuelType.AutoSize = true;
             this.lblFuelType.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblFuelType.Location = new System.Drawing.Point(12, 273);
+            this.lblFuelType.Location = new System.Drawing.Point(371, 210);
             this.lblFuelType.Name = "lblFuelType";
             this.lblFuelType.Size = new System.Drawing.Size(78, 20);
             this.lblFuelType.TabIndex = 15;
             this.lblFuelType.Text = "Fuel Type:";
             // 
-            // cbxFuelType
-            // 
-            this.cbxFuelType.FormattingEnabled = true;
-            this.cbxFuelType.Items.AddRange(new object[] {
-            "Diesel",
-            "Gasoline",
-            "Gas"});
-            this.cbxFuelType.Location = new System.Drawing.Point(180, 270);
-            this.cbxFuelType.Name = "cbxFuelType";
-            this.cbxFuelType.Size = new System.Drawing.Size(161, 23);
-            this.cbxFuelType.TabIndex = 16;
-            // 
             // lblCaretaker
             // 
             this.lblCaretaker.AutoSize = true;
             this.lblCaretaker.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCaretaker.Location = new System.Drawing.Point(12, 305);
+            this.lblCaretaker.Location = new System.Drawing.Point(369, 86);
             this.lblCaretaker.Name = "lblCaretaker";
             this.lblCaretaker.Size = new System.Drawing.Size(80, 20);
             this.lblCaretaker.TabIndex = 17;
@@ -213,7 +210,7 @@
             // cbxCaretaker
             // 
             this.cbxCaretaker.FormattingEnabled = true;
-            this.cbxCaretaker.Location = new System.Drawing.Point(180, 302);
+            this.cbxCaretaker.Location = new System.Drawing.Point(537, 83);
             this.cbxCaretaker.Name = "cbxCaretaker";
             this.cbxCaretaker.Size = new System.Drawing.Size(161, 23);
             this.cbxCaretaker.TabIndex = 18;
@@ -222,7 +219,7 @@
             // 
             this.lblColor.AutoSize = true;
             this.lblColor.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblColor.Location = new System.Drawing.Point(12, 337);
+            this.lblColor.Location = new System.Drawing.Point(369, 118);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(51, 20);
             this.lblColor.TabIndex = 19;
@@ -234,16 +231,16 @@
             this.cbxTransmission.Items.AddRange(new object[] {
             "Manual",
             "Automatic"});
-            this.cbxTransmission.Location = new System.Drawing.Point(179, 238);
+            this.cbxTransmission.Location = new System.Drawing.Point(180, 238);
             this.cbxTransmission.Name = "cbxTransmission";
-            this.cbxTransmission.Size = new System.Drawing.Size(162, 23);
+            this.cbxTransmission.Size = new System.Drawing.Size(161, 23);
             this.cbxTransmission.TabIndex = 20;
             // 
             // tbColor
             // 
-            this.tbColor.Location = new System.Drawing.Point(179, 337);
+            this.tbColor.Location = new System.Drawing.Point(537, 115);
             this.tbColor.Name = "tbColor";
-            this.tbColor.Size = new System.Drawing.Size(162, 23);
+            this.tbColor.Size = new System.Drawing.Size(161, 23);
             this.tbColor.TabIndex = 21;
             // 
             // btnDate
@@ -257,19 +254,131 @@
             this.btnDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDate.UseVisualStyleBackColor = true;
             // 
+            // rbtnDiesel
+            // 
+            this.rbtnDiesel.AutoSize = true;
+            this.rbtnDiesel.Location = new System.Drawing.Point(539, 208);
+            this.rbtnDiesel.Name = "rbtnDiesel";
+            this.rbtnDiesel.Size = new System.Drawing.Size(56, 19);
+            this.rbtnDiesel.TabIndex = 23;
+            this.rbtnDiesel.TabStop = true;
+            this.rbtnDiesel.Text = "Diesel";
+            this.rbtnDiesel.UseVisualStyleBackColor = true;
+            this.rbtnDiesel.Click += new System.EventHandler(this.rbtnDiesel_Click);
+            // 
+            // rbtnGasoline
+            // 
+            this.rbtnGasoline.AutoSize = true;
+            this.rbtnGasoline.Location = new System.Drawing.Point(539, 233);
+            this.rbtnGasoline.Name = "rbtnGasoline";
+            this.rbtnGasoline.Size = new System.Drawing.Size(70, 19);
+            this.rbtnGasoline.TabIndex = 24;
+            this.rbtnGasoline.TabStop = true;
+            this.rbtnGasoline.Text = "Gasoline";
+            this.rbtnGasoline.UseVisualStyleBackColor = true;
+            // 
+            // rbtnGas
+            // 
+            this.rbtnGas.AutoSize = true;
+            this.rbtnGas.Location = new System.Drawing.Point(539, 258);
+            this.rbtnGas.Name = "rbtnGas";
+            this.rbtnGas.Size = new System.Drawing.Size(44, 19);
+            this.rbtnGas.TabIndex = 25;
+            this.rbtnGas.TabStop = true;
+            this.rbtnGas.Text = "Gas";
+            this.rbtnGas.UseVisualStyleBackColor = true;
+            // 
+            // lblPricePerDay
+            // 
+            this.lblPricePerDay.AutoSize = true;
+            this.lblPricePerDay.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblPricePerDay.Location = new System.Drawing.Point(369, 149);
+            this.lblPricePerDay.Name = "lblPricePerDay";
+            this.lblPricePerDay.Size = new System.Drawing.Size(104, 20);
+            this.lblPricePerDay.TabIndex = 26;
+            this.lblPricePerDay.Text = "Price Per Day:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(537, 146);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(161, 23);
+            this.textBox1.TabIndex = 27;
+            // 
+            // cbxIsDamaged
+            // 
+            this.cbxIsDamaged.AutoSize = true;
+            this.cbxIsDamaged.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cbxIsDamaged.Location = new System.Drawing.Point(396, 288);
+            this.cbxIsDamaged.Name = "cbxIsDamaged";
+            this.cbxIsDamaged.Size = new System.Drawing.Size(115, 24);
+            this.cbxIsDamaged.TabIndex = 29;
+            this.cbxIsDamaged.Text = "Is Damaged?";
+            this.cbxIsDamaged.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox1.Location = new System.Drawing.Point(221, 288);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(86, 24);
+            this.checkBox1.TabIndex = 30;
+            this.checkBox1.Text = "Is Away?";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // lblMileage
+            // 
+            this.lblMileage.AutoSize = true;
+            this.lblMileage.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblMileage.Location = new System.Drawing.Point(369, 179);
+            this.lblMileage.Name = "lblMileage";
+            this.lblMileage.Size = new System.Drawing.Size(68, 20);
+            this.lblMileage.TabIndex = 31;
+            this.lblMileage.Text = "Mileage:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(537, 176);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(161, 23);
+            this.textBox2.TabIndex = 32;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(375, 337);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(160, 71);
+            this.btnAdd.TabIndex = 33;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
             // AddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 761);
-            this.Controls.Add(this.btnDate);
-            this.Controls.Add(this.tbColor);
-            this.Controls.Add(this.cbxTransmission);
-            this.Controls.Add(this.lblColor);
+            this.ClientSize = new System.Drawing.Size(710, 441);
+            this.Controls.Add(this.cbxIsDamaged);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.lblAddData);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.cbxCaretaker);
-            this.Controls.Add(this.lblCaretaker);
-            this.Controls.Add(this.cbxFuelType);
+            this.Controls.Add(this.rbtnGasoline);
+            this.Controls.Add(this.rbtnDiesel);
             this.Controls.Add(this.lblFuelType);
+            this.Controls.Add(this.rbtnGas);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lblMileage);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblPricePerDay);
+            this.Controls.Add(this.tbColor);
+            this.Controls.Add(this.lblColor);
+            this.Controls.Add(this.lblCaretaker);
+            this.Controls.Add(this.btnDate);
+            this.Controls.Add(this.cbxTransmission);
             this.Controls.Add(this.lblTransmission);
             this.Controls.Add(this.tbYear);
             this.Controls.Add(this.lblYear);
@@ -282,8 +391,6 @@
             this.Controls.Add(this.tbLicensePlateRest);
             this.Controls.Add(this.tbLicensePlateFirstThree);
             this.Controls.Add(this.lblLicensePlate);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.lblAddData);
             this.Name = "AddCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCar";
@@ -309,12 +416,21 @@
         private System.Windows.Forms.TextBox tbYear;
         private System.Windows.Forms.Label lblTransmission;
         private System.Windows.Forms.Label lblFuelType;
-        private System.Windows.Forms.ComboBox cbxFuelType;
         private System.Windows.Forms.Label lblCaretaker;
         private System.Windows.Forms.ComboBox cbxCaretaker;
         private System.Windows.Forms.Label lblColor;
         private System.Windows.Forms.ComboBox cbxTransmission;
         private System.Windows.Forms.TextBox tbColor;
         private System.Windows.Forms.Button btnDate;
+        private System.Windows.Forms.RadioButton rbtnDiesel;
+        private System.Windows.Forms.RadioButton rbtnGasoline;
+        private System.Windows.Forms.RadioButton rbtnGas;
+        private System.Windows.Forms.Label lblPricePerDay;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cbxIsDamaged;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label lblMileage;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
