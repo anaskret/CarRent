@@ -30,7 +30,7 @@ namespace Project
             if (Validate(tbLogin.Text, tbPassword.Text))
             {
                 this.Hide();
-                CarList m = new CarList();
+                MockMenu m = new MockMenu();
                 m.Show();
             }
             else

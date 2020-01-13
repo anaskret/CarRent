@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Project
 {
-    class ListOfCars
+    class App
     {
-        public List<Car> Cars { get; set; }
+        public List<Car> ListOfCars { get; set; }
     }
 }

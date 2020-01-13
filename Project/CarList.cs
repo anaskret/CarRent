@@ -18,12 +18,9 @@ namespace Project
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void CarList_Load_1(object sender, EventArgs e)
         {
             lvCarList.View = View.Details;
             lvCarList.GridLines = true;
@@ -44,11 +41,11 @@ namespace Project
 
             StreamReader r = new StreamReader("database.json");
             string json = r.ReadToEnd();
-            var app = JsonConvert.DeserializeObject<ListOfCars>(json);
+            var app = JsonConvert.DeserializeObject<App>(json);
             r.Close();
             r.Dispose();
 
-            var list = app.Cars;
+            var list = app.ListOfCars;
 
             foreach (var item in list)
             {
@@ -56,9 +53,11 @@ namespace Project
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            MockMenu m = new MockMenu();
+            m.Show();
         }
     }
 }
