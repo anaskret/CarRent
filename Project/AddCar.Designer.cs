@@ -39,8 +39,7 @@
             this.tbModel = new System.Windows.Forms.TextBox();
             this.lblEngine = new System.Windows.Forms.Label();
             this.tbEngine = new System.Windows.Forms.TextBox();
-            this.lblYear = new System.Windows.Forms.Label();
-            this.tbYear = new System.Windows.Forms.TextBox();
+            this.lblProductionYear = new System.Windows.Forms.Label();
             this.lblTransmission = new System.Windows.Forms.Label();
             this.lblFuelType = new System.Windows.Forms.Label();
             this.lblCaretaker = new System.Windows.Forms.Label();
@@ -48,23 +47,23 @@
             this.lblColor = new System.Windows.Forms.Label();
             this.cbxTransmission = new System.Windows.Forms.ComboBox();
             this.tbColor = new System.Windows.Forms.TextBox();
-            this.btnDate = new System.Windows.Forms.Button();
             this.rbtnDiesel = new System.Windows.Forms.RadioButton();
             this.rbtnGasoline = new System.Windows.Forms.RadioButton();
             this.rbtnGas = new System.Windows.Forms.RadioButton();
             this.lblPricePerDay = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cbxIsDamaged = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblMileage = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownYear = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownYear)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(180, 336);
+            this.btnBack.Location = new System.Drawing.Point(180, 302);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(161, 71);
             this.btnBack.TabIndex = 0;
@@ -76,7 +75,7 @@
             // 
             this.lblAddData.AutoSize = true;
             this.lblAddData.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAddData.Location = new System.Drawing.Point(289, 9);
+            this.lblAddData.Location = new System.Drawing.Point(289, 18);
             this.lblAddData.Name = "lblAddData";
             this.lblAddData.Size = new System.Drawing.Size(131, 37);
             this.lblAddData.TabIndex = 1;
@@ -96,6 +95,7 @@
             // tbLicensePlateFirstThree
             // 
             this.tbLicensePlateFirstThree.Location = new System.Drawing.Point(180, 83);
+            this.tbLicensePlateFirstThree.MaxLength = 3;
             this.tbLicensePlateFirstThree.Name = "tbLicensePlateFirstThree";
             this.tbLicensePlateFirstThree.Size = new System.Drawing.Size(35, 23);
             this.tbLicensePlateFirstThree.TabIndex = 3;
@@ -103,6 +103,7 @@
             // tbLicensePlateRest
             // 
             this.tbLicensePlateRest.Location = new System.Drawing.Point(221, 83);
+            this.tbLicensePlateRest.MaxLength = 5;
             this.tbLicensePlateRest.Name = "tbLicensePlateRest";
             this.tbLicensePlateRest.Size = new System.Drawing.Size(120, 23);
             this.tbLicensePlateRest.TabIndex = 4;
@@ -159,23 +160,15 @@
             this.tbEngine.Size = new System.Drawing.Size(161, 23);
             this.tbEngine.TabIndex = 10;
             // 
-            // lblYear
+            // lblProductionYear
             // 
-            this.lblYear.AutoSize = true;
-            this.lblYear.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblYear.Location = new System.Drawing.Point(12, 210);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(44, 20);
-            this.lblYear.TabIndex = 11;
-            this.lblYear.Text = "Year:";
-            // 
-            // tbYear
-            // 
-            this.tbYear.Location = new System.Drawing.Point(180, 207);
-            this.tbYear.Name = "tbYear";
-            this.tbYear.ReadOnly = true;
-            this.tbYear.Size = new System.Drawing.Size(103, 23);
-            this.tbYear.TabIndex = 12;
+            this.lblProductionYear.AutoSize = true;
+            this.lblProductionYear.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblProductionYear.Location = new System.Drawing.Point(12, 210);
+            this.lblProductionYear.Name = "lblProductionYear";
+            this.lblProductionYear.Size = new System.Drawing.Size(124, 20);
+            this.lblProductionYear.TabIndex = 11;
+            this.lblProductionYear.Text = "Production Year:";
             // 
             // lblTransmission
             // 
@@ -243,17 +236,6 @@
             this.tbColor.Size = new System.Drawing.Size(161, 23);
             this.tbColor.TabIndex = 21;
             // 
-            // btnDate
-            // 
-            this.btnDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDate.Location = new System.Drawing.Point(289, 207);
-            this.btnDate.Name = "btnDate";
-            this.btnDate.Size = new System.Drawing.Size(52, 23);
-            this.btnDate.TabIndex = 22;
-            this.btnDate.Text = "Date";
-            this.btnDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDate.UseVisualStyleBackColor = true;
-            // 
             // rbtnDiesel
             // 
             this.rbtnDiesel.AutoSize = true;
@@ -298,36 +280,6 @@
             this.lblPricePerDay.TabIndex = 26;
             this.lblPricePerDay.Text = "Price Per Day:";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(537, 146);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 23);
-            this.textBox1.TabIndex = 27;
-            // 
-            // cbxIsDamaged
-            // 
-            this.cbxIsDamaged.AutoSize = true;
-            this.cbxIsDamaged.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cbxIsDamaged.Location = new System.Drawing.Point(396, 288);
-            this.cbxIsDamaged.Name = "cbxIsDamaged";
-            this.cbxIsDamaged.Size = new System.Drawing.Size(115, 24);
-            this.cbxIsDamaged.TabIndex = 29;
-            this.cbxIsDamaged.Text = "Is Damaged?";
-            this.cbxIsDamaged.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(221, 288);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 24);
-            this.checkBox1.TabIndex = 30;
-            this.checkBox1.Text = "Is Away?";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // lblMileage
             // 
             this.lblMileage.AutoSize = true;
@@ -348,23 +300,67 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(375, 337);
+            this.btnAdd.Location = new System.Drawing.Point(371, 302);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(160, 71);
             this.btnAdd.TabIndex = 33;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown1.Location = new System.Drawing.Point(537, 147);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(161, 23);
+            this.numericUpDown1.TabIndex = 34;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // numUpDownYear
+            // 
+            this.numUpDownYear.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numUpDownYear.Location = new System.Drawing.Point(180, 208);
+            this.numUpDownYear.Maximum = new decimal(new int[] {
+            2020,
+            0,
+            0,
+            0});
+            this.numUpDownYear.Minimum = new decimal(new int[] {
+            1950,
+            0,
+            0,
+            0});
+            this.numUpDownYear.Name = "numUpDownYear";
+            this.numUpDownYear.Size = new System.Drawing.Size(161, 23);
+            this.numUpDownYear.TabIndex = 35;
+            this.numUpDownYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numUpDownYear.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
             // 
             // AddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 441);
-            this.Controls.Add(this.cbxIsDamaged);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnBack);
+            this.ClientSize = new System.Drawing.Size(710, 397);
             this.Controls.Add(this.lblAddData);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numUpDownYear);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbxCaretaker);
             this.Controls.Add(this.rbtnGasoline);
             this.Controls.Add(this.rbtnDiesel);
@@ -372,16 +368,13 @@
             this.Controls.Add(this.rbtnGas);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lblMileage);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblPricePerDay);
             this.Controls.Add(this.tbColor);
             this.Controls.Add(this.lblColor);
             this.Controls.Add(this.lblCaretaker);
-            this.Controls.Add(this.btnDate);
             this.Controls.Add(this.cbxTransmission);
             this.Controls.Add(this.lblTransmission);
-            this.Controls.Add(this.tbYear);
-            this.Controls.Add(this.lblYear);
+            this.Controls.Add(this.lblProductionYear);
             this.Controls.Add(this.tbEngine);
             this.Controls.Add(this.lblEngine);
             this.Controls.Add(this.tbModel);
@@ -394,6 +387,8 @@
             this.Name = "AddCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCar";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownYear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,8 +407,7 @@
         private System.Windows.Forms.TextBox tbModel;
         private System.Windows.Forms.Label lblEngine;
         private System.Windows.Forms.TextBox tbEngine;
-        private System.Windows.Forms.Label lblYear;
-        private System.Windows.Forms.TextBox tbYear;
+        private System.Windows.Forms.Label lblProductionYear;
         private System.Windows.Forms.Label lblTransmission;
         private System.Windows.Forms.Label lblFuelType;
         private System.Windows.Forms.Label lblCaretaker;
@@ -421,16 +415,14 @@
         private System.Windows.Forms.Label lblColor;
         private System.Windows.Forms.ComboBox cbxTransmission;
         private System.Windows.Forms.TextBox tbColor;
-        private System.Windows.Forms.Button btnDate;
         private System.Windows.Forms.RadioButton rbtnDiesel;
         private System.Windows.Forms.RadioButton rbtnGasoline;
         private System.Windows.Forms.RadioButton rbtnGas;
         private System.Windows.Forms.Label lblPricePerDay;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox cbxIsDamaged;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lblMileage;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numUpDownYear;
     }
 }

@@ -22,32 +22,25 @@ namespace Project
             m.Show();
         }
 
-        private void lblAddData_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            string licensePlate = tbLicensePlateFirstThree.Text + tbLicensePlateRest.Text;
+            MessageBox.Show($"{licensePlate}");
+           // var add = new Car();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        private void lblAddData_Click(object sender, EventArgs e){}
 
-        }
+        private void label1_Click(object sender, EventArgs e){}
 
-        private void clbFuelType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+        private void clbFuelType_SelectedIndexChanged(object sender, EventArgs e){}
 
-        private void clbFuelType_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-        }
+        private void clbFuelType_ItemCheck(object sender, ItemCheckEventArgs e){}
 
-        private void rbtnDiesel_Click(object sender, EventArgs e)
-        {
-        }
+        private void rbtnDiesel_Click(object sender, EventArgs e){}
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBox1_CheckedChanged(object sender, EventArgs e){}
 
-        }
+        
     }
 }

@@ -49,7 +49,7 @@ namespace Project
 
             foreach (var item in list)
             {
-                lvCarList.Items.Add(Tools.AddData(item));
+                lvCarList.Items.Add(ManagerApp.ReadData(item));
             }
         }
 
@@ -58,6 +58,12 @@ namespace Project
             this.Hide();
             MockMenu m = new MockMenu();
             m.Show();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateCar c = new UpdateCar();
+            c.Show();
         }
     }
 }

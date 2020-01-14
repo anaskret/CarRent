@@ -30,6 +30,7 @@
         {
             this.lvCarList = new System.Windows.Forms.ListView();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvCarList
@@ -44,7 +45,7 @@
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(558, 669);
+            this.btnBack.Location = new System.Drawing.Point(461, 672);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(164, 63);
             this.btnBack.TabIndex = 1;
@@ -52,14 +53,27 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Location = new System.Drawing.Point(658, 672);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(164, 63);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Update Selected Car";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // CarList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 761);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lvCarList);
             this.Name = "CarList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CarList";
             this.Load += new System.EventHandler(this.CarList_Load_1);
             this.ResumeLayout(false);
@@ -70,5 +84,6 @@
 
         private System.Windows.Forms.ListView lvCarList;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

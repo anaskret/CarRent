@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    class Tools
+    class ManagerApp
     {
-        public static ListViewItem AddData(Car obj)
+        public static ListViewItem ReadData(Car obj)
         {
             string[] arr = new string[12];
             arr[0] = obj.LicensePlate;
@@ -24,6 +24,11 @@ namespace Project
             arr[11] = obj.IsAway;
             var item = new ListViewItem(arr);
             return item;
+        }
+        
+        public static Car AddData(Car obj)
+        {
+            return obj;
         }
     }
 }
