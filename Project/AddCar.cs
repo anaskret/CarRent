@@ -18,15 +18,16 @@ namespace Project
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MockMenu m = new MockMenu();
-            m.Show();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string licensePlate = tbLicensePlateFirstThree.Text + tbLicensePlateRest.Text;
-            MessageBox.Show($"{licensePlate}");
-           // var add = new Car();
+            string fuel = ManagerApp.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
+
+            double price = ManagerApp.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
+
+            Car car = new Car(tbLicensePlate.Text, tbBrand.Text, tbModel.Text, tbColor.Text, Convert.ToInt32(numUpDownMileage.Value), Convert.ToInt32(numUpDownYear.Value),
+                tbEngine.Text, fuel, cbxTransmission.Text, price, cbxCaretaker.Text);
         }
 
         private void lblAddData_Click(object sender, EventArgs e){}

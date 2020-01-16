@@ -9,26 +9,36 @@ namespace Project
     {
         public static ListViewItem ReadData(Car obj)
         {
-            string[] arr = new string[12];
+            string[] arr = new string[11];
             arr[0] = obj.LicensePlate;
             arr[1] = obj.Brand;
             arr[2] = obj.Model;
-            arr[3] = obj.Colour;
-            arr[4] = obj.Mileage;
-            arr[5] = obj.ProductionYear;
+            arr[3] = obj.Color;
+            arr[4] = obj.Mileage+""; 
+            arr[5] = obj.ProductionYear+"";
             arr[6] = obj.Engine;
             arr[7] = obj.FuelType;
             arr[8] = obj.Transmission;
-            arr[9] = obj.PricePerDay;
-            arr[10] = obj.IsDamaged;
-            arr[11] = obj.IsAway;
+            arr[9] = obj.PricePerDay+"";
+            arr[10] = obj.Caretaker;
+
             var item = new ListViewItem(arr);
             return item;
         }
-        
-        public static Car AddData(Car obj)
+
+        public static string WhichFuel(bool diesel, bool gasoline)
         {
-            return obj;
+            if (diesel == true)
+                return "Diesel";
+            else if (gasoline == true)
+                return "Gasoline";
+            else return "Gas";
+        }
+
+        public static double CombinePrice(decimal integer, decimal decim)
+        {
+            double price = Convert.ToDouble(integer + decim);
+            return price;
         }
     }
 }

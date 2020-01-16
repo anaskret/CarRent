@@ -31,8 +31,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.lblAddData = new System.Windows.Forms.Label();
             this.lblLicensePlate = new System.Windows.Forms.Label();
-            this.tbLicensePlateFirstThree = new System.Windows.Forms.TextBox();
-            this.tbLicensePlateRest = new System.Windows.Forms.TextBox();
+            this.tbLicensePlate = new System.Windows.Forms.TextBox();
             this.lblBrand = new System.Windows.Forms.Label();
             this.tbBrand = new System.Windows.Forms.TextBox();
             this.lblModel = new System.Windows.Forms.Label();
@@ -52,12 +51,17 @@
             this.rbtnGas = new System.Windows.Forms.RadioButton();
             this.lblPricePerDay = new System.Windows.Forms.Label();
             this.lblMileage = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownPricePerDay = new System.Windows.Forms.NumericUpDown();
             this.numUpDownYear = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.lblDot = new System.Windows.Forms.Label();
+            this.numUpDownPricePerDayAfterComa = new System.Windows.Forms.NumericUpDown();
+            this.lblZloty = new System.Windows.Forms.Label();
+            this.numUpDownMileage = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPricePerDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPricePerDayAfterComa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownMileage)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBack
@@ -67,7 +71,7 @@
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(161, 71);
             this.btnBack.TabIndex = 0;
-            this.btnBack.Text = "Back To Menu";
+            this.btnBack.Text = "Cancel";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -92,21 +96,14 @@
             this.lblLicensePlate.TabIndex = 2;
             this.lblLicensePlate.Text = "License Plate Number:";
             // 
-            // tbLicensePlateFirstThree
+            // tbLicensePlate
             // 
-            this.tbLicensePlateFirstThree.Location = new System.Drawing.Point(180, 83);
-            this.tbLicensePlateFirstThree.MaxLength = 3;
-            this.tbLicensePlateFirstThree.Name = "tbLicensePlateFirstThree";
-            this.tbLicensePlateFirstThree.Size = new System.Drawing.Size(35, 23);
-            this.tbLicensePlateFirstThree.TabIndex = 3;
-            // 
-            // tbLicensePlateRest
-            // 
-            this.tbLicensePlateRest.Location = new System.Drawing.Point(221, 83);
-            this.tbLicensePlateRest.MaxLength = 5;
-            this.tbLicensePlateRest.Name = "tbLicensePlateRest";
-            this.tbLicensePlateRest.Size = new System.Drawing.Size(120, 23);
-            this.tbLicensePlateRest.TabIndex = 4;
+            this.tbLicensePlate.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbLicensePlate.Location = new System.Drawing.Point(180, 83);
+            this.tbLicensePlate.MaxLength = 8;
+            this.tbLicensePlate.Name = "tbLicensePlate";
+            this.tbLicensePlate.Size = new System.Drawing.Size(161, 23);
+            this.tbLicensePlate.TabIndex = 4;
             // 
             // lblBrand
             // 
@@ -202,6 +199,7 @@
             // 
             // cbxCaretaker
             // 
+            this.cbxCaretaker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCaretaker.FormattingEnabled = true;
             this.cbxCaretaker.Location = new System.Drawing.Point(537, 83);
             this.cbxCaretaker.Name = "cbxCaretaker";
@@ -220,6 +218,7 @@
             // 
             // cbxTransmission
             // 
+            this.cbxTransmission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTransmission.FormattingEnabled = true;
             this.cbxTransmission.Items.AddRange(new object[] {
             "Manual",
@@ -290,13 +289,6 @@
             this.lblMileage.TabIndex = 31;
             this.lblMileage.Text = "Mileage:";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(537, 176);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(161, 23);
-            this.textBox2.TabIndex = 32;
-            // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -308,20 +300,20 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // numericUpDown1
+            // numUpDownPricePerDay
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown1.Location = new System.Drawing.Point(537, 147);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numUpDownPricePerDay.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numUpDownPricePerDay.Location = new System.Drawing.Point(537, 149);
+            this.numUpDownPricePerDay.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(161, 23);
-            this.numericUpDown1.TabIndex = 34;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numUpDownPricePerDay.Name = "numUpDownPricePerDay";
+            this.numUpDownPricePerDay.Size = new System.Drawing.Size(58, 23);
+            this.numUpDownPricePerDay.TabIndex = 34;
+            this.numUpDownPricePerDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numUpDownPricePerDay.Value = new decimal(new int[] {
             50,
             0,
             0,
@@ -351,13 +343,75 @@
             0,
             0});
             // 
+            // lblDot
+            // 
+            this.lblDot.AutoSize = true;
+            this.lblDot.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDot.Location = new System.Drawing.Point(599, 152);
+            this.lblDot.Name = "lblDot";
+            this.lblDot.Size = new System.Drawing.Size(13, 20);
+            this.lblDot.TabIndex = 36;
+            this.lblDot.Text = ".";
+            // 
+            // numUpDownPricePerDayAfterComa
+            // 
+            this.numUpDownPricePerDayAfterComa.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numUpDownPricePerDayAfterComa.Location = new System.Drawing.Point(615, 149);
+            this.numUpDownPricePerDayAfterComa.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numUpDownPricePerDayAfterComa.Name = "numUpDownPricePerDayAfterComa";
+            this.numUpDownPricePerDayAfterComa.Size = new System.Drawing.Size(58, 23);
+            this.numUpDownPricePerDayAfterComa.TabIndex = 34;
+            this.numUpDownPricePerDayAfterComa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numUpDownPricePerDayAfterComa.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // lblZloty
+            // 
+            this.lblZloty.AutoSize = true;
+            this.lblZloty.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblZloty.Location = new System.Drawing.Point(678, 152);
+            this.lblZloty.Name = "lblZloty";
+            this.lblZloty.Size = new System.Drawing.Size(20, 20);
+            this.lblZloty.TabIndex = 37;
+            this.lblZloty.Text = "zł";
+            // 
+            // numUpDownMileage
+            // 
+            this.numUpDownMileage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numUpDownMileage.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numUpDownMileage.Location = new System.Drawing.Point(537, 181);
+            this.numUpDownMileage.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.numUpDownMileage.Name = "numUpDownMileage";
+            this.numUpDownMileage.Size = new System.Drawing.Size(161, 23);
+            this.numUpDownMileage.TabIndex = 38;
+            this.numUpDownMileage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // AddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 397);
+            this.Controls.Add(this.numUpDownMileage);
+            this.Controls.Add(this.lblDot);
+            this.Controls.Add(this.numUpDownPricePerDayAfterComa);
+            this.Controls.Add(this.lblZloty);
+            this.Controls.Add(this.numUpDownPricePerDay);
             this.Controls.Add(this.lblAddData);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.numUpDownYear);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAdd);
@@ -366,7 +420,6 @@
             this.Controls.Add(this.rbtnDiesel);
             this.Controls.Add(this.lblFuelType);
             this.Controls.Add(this.rbtnGas);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lblMileage);
             this.Controls.Add(this.lblPricePerDay);
             this.Controls.Add(this.tbColor);
@@ -381,14 +434,15 @@
             this.Controls.Add(this.tbBrand);
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.lblBrand);
-            this.Controls.Add(this.tbLicensePlateRest);
-            this.Controls.Add(this.tbLicensePlateFirstThree);
+            this.Controls.Add(this.tbLicensePlate);
             this.Controls.Add(this.lblLicensePlate);
             this.Name = "AddCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCar";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPricePerDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPricePerDayAfterComa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownMileage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,8 +453,7 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblAddData;
         private System.Windows.Forms.Label lblLicensePlate;
-        private System.Windows.Forms.TextBox tbLicensePlateFirstThree;
-        private System.Windows.Forms.TextBox tbLicensePlateRest;
+        private System.Windows.Forms.TextBox tbLicensePlate;
         private System.Windows.Forms.Label lblBrand;
         private System.Windows.Forms.TextBox tbBrand;
         private System.Windows.Forms.Label lblModel;
@@ -420,9 +473,13 @@
         private System.Windows.Forms.RadioButton rbtnGas;
         private System.Windows.Forms.Label lblPricePerDay;
         private System.Windows.Forms.Label lblMileage;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownPricePerDay;
         private System.Windows.Forms.NumericUpDown numUpDownYear;
+        private System.Windows.Forms.NumericUpDown numUpDownPricePerDay;
+        private System.Windows.Forms.Label lblDot;
+        private System.Windows.Forms.NumericUpDown numUpDownPricePerDayAfterComa;
+        private System.Windows.Forms.Label lblZloty;
+        private System.Windows.Forms.NumericUpDown numUpDownMileage;
     }
 }

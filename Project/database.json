@@ -1,18 +1,30 @@
 ﻿{
   "listOfCars": [
     {
-      "licensePlate": "PWL 14141",
+      "licensePlate": "PWL14141",
       "brand": "Mazda",
       "model": "CX3",
-      "colour": "Black",
-      "mileage": "14000",
-      "productionYear": "2018",
+      "color": "Black",
+      "mileage": 14000,
+      "productionYear": 2018,
       "engine": "Jakis silnik",
       "fuelType": "Diesel",
-      "transmission": "7.4",
-      "pricePerDay": "99.99",
-      "isDamaged": "false",
-      "isAway": "false"
+      "transmission": "Automatic",
+      "pricePerDay": 99.99,
+      "caretaker": "Michal Karabin" 
+    },
+    {
+      "licensePlate": "PGOJEBAC",
+      "brand": "Audi",
+      "model": "A5",
+      "color": "Black",
+      "mileage": 354678,
+      "productionYear": 2010,
+      "engine": "Jakis silnik 2",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "pricePerDay": 50,
+      "caretaker": "Lukasz Firlej"
     }
   ]
 }
