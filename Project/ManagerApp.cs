@@ -37,7 +37,8 @@ namespace Project
 
         public static double CombinePrice(decimal integer, decimal decim)
         {
-            double price = Convert.ToDouble(integer + decim);
+            var afterComa = Convert.ToInt32(decim) * 0.01;
+            double price = Convert.ToDouble(integer);
             return price;
         }
     }
