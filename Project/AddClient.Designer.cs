@@ -41,6 +41,8 @@
             this.lblDriversLicenseNumber = new System.Windows.Forms.Label();
             this.tbxEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             // 
             // lblAdd
             // 
@@ -48,7 +50,7 @@
             this.lblAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAdd.Location = new System.Drawing.Point(234, 24);
             this.lblAdd.Name = "lblAdd";
-            this.lblAdd.Size = new System.Drawing.Size(181, 46);
+            this.lblAdd.Size = new System.Drawing.Size(179, 45);
             this.lblAdd.TabIndex = 0;
             this.lblAdd.Text = "Add Client";
             // 
@@ -154,11 +156,35 @@
             this.lblEmail.TabIndex = 1;
             this.lblEmail.Text = "Email";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCancel.Location = new System.Drawing.Point(116, 233);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(186, 65);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(335, 233);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(186, 65);
+            this.btnAdd.TabIndex = 8;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 354);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbxPhoneNumber);
             this.Controls.Add(this.lblPhoneNumber);
             this.Controls.Add(this.tbxLastName);
@@ -193,5 +219,7 @@
         private System.Windows.Forms.Label lblDriversLicenseNumber;
         private System.Windows.Forms.TextBox tbxEmail;
         private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
