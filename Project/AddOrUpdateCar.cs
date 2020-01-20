@@ -12,14 +12,14 @@ namespace Project
 {
     public partial class AddOrUpdateCar : Form
     {
-        private readonly Car car;
+        private readonly CarService car;
         private readonly bool isUpdate;
 
         public AddOrUpdateCar(bool isUpdate)
         {
             InitializeComponent();
         }
-        public AddOrUpdateCar(Car car, bool isUpdate)
+        public AddOrUpdateCar(CarService car, bool isUpdate)
         {
             this.car = car;
             this.isUpdate = isUpdate;
@@ -72,12 +72,13 @@ namespace Project
 
             string fuel = ManagerApp.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
 
-            double price = ManagerApp.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
+            decimal price = ManagerApp.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
 
-            Car car = new Car(tbLicensePlate.Text, tbBrand.Text, tbModel.Text, tbColor.Text, Convert.ToInt32(numUpDownMileage.Value), Convert.ToInt32(numUpDownYear.Value),
-                tbEngine.Text, fuel, cbxTransmission.Text, price, cbxCaretaker.Text);
+            CarService car = new CarService(tbLicensePlate.Text, tbBrand.Text, tbModel.Text, tbColor.Text, Convert.ToInt32(numUpDownMileage.Value), Convert.ToInt32(numUpDownYear.Value),
+                tbEngine.Text, fuel, cbxTransmission.Text, price);
 
-            CarList carList = new CarList();
+
+
             dynamic addCar = new JObject();
             addCar.licensePlate = tbLicensePlate.Text;
             addCar.brand = tbBrand.Text;

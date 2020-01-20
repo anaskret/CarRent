@@ -6,6 +6,6 @@ namespace Project
 {
     class App
     {
-        public List<Car> ListOfCars { get; set; }
+        public List<CarService> ListOfCars { get; set; }
     }
 }

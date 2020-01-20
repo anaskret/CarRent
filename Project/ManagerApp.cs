@@ -7,9 +7,9 @@ namespace Project
 {
     class ManagerApp
     {
-        public static ListViewItem ReadData(Car obj)
+        public static ListViewItem ReadData(CarService obj)
         {
-            string[] arr = new string[11];
+            string[] arr = new string[10];
             arr[0] = obj.LicensePlate;
             arr[1] = obj.Brand;
             arr[2] = obj.Model;
@@ -20,7 +20,6 @@ namespace Project
             arr[7] = obj.FuelType;
             arr[8] = obj.Transmission;
             arr[9] = obj.PricePerDay+"";
-            arr[10] = obj.Caretaker;
 
             var item = new ListViewItem(arr);
             return item;
@@ -35,10 +34,10 @@ namespace Project
             else return "Gas";
         }
 
-        public static double CombinePrice(decimal integer, decimal decim)
+        public static decimal CombinePrice(decimal integer, decimal decim)
         {
-            var afterComa = Convert.ToInt32(decim) * 0.01;
-            double price = Convert.ToDouble(integer);
+            var afterComa = Convert.ToDouble(decim) * 0.01;
+            decimal price = Convert.ToDecimal(Convert.ToDouble(integer)+afterComa);
             return price;
         }
     }

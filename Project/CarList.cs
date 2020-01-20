@@ -36,7 +36,6 @@ namespace Project
             lvCarList.Columns.Add("Fuel type", 100);
             lvCarList.Columns.Add("Transmission", 100);
             lvCarList.Columns.Add("Price per day", 75);
-            lvCarList.Columns.Add("Caretaker", 100);
 
             StreamReader r = new StreamReader("database.json");
             string json = r.ReadToEnd();
@@ -63,7 +62,7 @@ namespace Project
             if (indices < 1)
                 return;
 
-            Car car = GetItems(indices);
+            CarService car = GetItems();
 
             isUpdate = true;
             var updateCar = new AddOrUpdateCar(car, isUpdate);
@@ -116,14 +115,14 @@ namespace Project
             if (indices < 1)
                 return;
 
-            Car car = GetItems(indices); 
+            CarService car = GetItems(); 
 
             isUpdate = true;
             var updateCar = new AddOrUpdateCar(car, isUpdate);
             updateCar.Show();
         }
 
-        private Car GetItems(int indices)
+        private CarService GetItems()
         {
             string licensePlate = lvCarList.SelectedItems[0].SubItems[0].Text;
             string brand = lvCarList.SelectedItems[0].SubItems[1].Text;
@@ -134,10 +133,10 @@ namespace Project
             string engine = lvCarList.SelectedItems[0].SubItems[6].Text;
             string fuelType = lvCarList.SelectedItems[0].SubItems[7].Text;
             string transmission = lvCarList.SelectedItems[0].SubItems[8].Text;
-            double pricePerDay = Convert.ToDouble(lvCarList.SelectedItems[0].SubItems[9].Text);
+            decimal pricePerDay = Convert.ToDecimal(lvCarList.SelectedItems[0].SubItems[9].Text);
             string caretaker = lvCarList.SelectedItems[0].SubItems[10].Text;
 
-            Car car = new Car(licensePlate, brand, model, color, mileage, year, engine, fuelType, transmission, pricePerDay, caretaker);
+            CarService car = new CarService(licensePlate, brand, model, color, mileage, year, engine, fuelType, transmission, pricePerDay);
             return car;
         }
     }
