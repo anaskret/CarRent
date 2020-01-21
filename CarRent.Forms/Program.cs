@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-namespace Project
+namespace CarRent.Forms
 {
     static class Program
     {
@@ -18,7 +17,7 @@ namespace Project
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogIn());
+            Application.Run(new Form1());
         }
     }
 }

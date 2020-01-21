@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using CarRent.Models.Dtos;
+using CarRent.DataAccess;
+using CarRent.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +9,9 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using CarRent.App;
 
 namespace Project
 {
@@ -63,42 +68,88 @@ namespace Project
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //Dodawanie/Modyfikowanie
+            if (!AllFilled())
+                return;
+
+            var provider = new Dependencies().Load();
+            ICarService carService = provider.GetService<ICarService>();
+            var car = AddCarFromForm();
+
+            carService.AddCar(1, car);
+
+            if (!isUpdate)
+            {
+               
+            }
+            this.Hide();
+        }
+         
+        private AddCarDto AddCarFromForm()
+        {
+            var addCar = new AddCarDto();
+
 
             string fuel = ManagerApp.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
 
             decimal price = ManagerApp.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
 
-            CarService car = new CarService(tbLicensePlate.Text, tbBrand.Text, tbModel.Text, tbColor.Text, Convert.ToInt32(numUpDownMileage.Value), Convert.ToInt32(numUpDownYear.Value),
-                tbEngine.Text, fuel, cbxTransmission.Text, price);
+            addCar.LicensePlateNumber = tbLicensePlate.Text;
+            addCar.Brand = tbBrand.Text;
+            addCar.Model = tbModel.Text;
+            addCar.Color = tbColor.Text;
+            addCar.Mileage = Convert.ToInt32(numUpDownMileage.Value);
+            addCar.Year = Convert.ToInt32(numUpDownYear.Value);
+            addCar.Engine = tbEngine.Text;
+            addCar.FuelType = fuel;
+            addCar.Transmission = cbxTransmission.Text;
+            addCar.PricePerDay = price;
 
+            return addCar;
+        }
 
-
-            dynamic addCar = new JObject();
-            addCar.licensePlate = tbLicensePlate.Text;
-            addCar.brand = tbBrand.Text;
-            addCar.model= tbModel.Text;
-            addCar.color= tbColor.Text;
-            addCar.mileage= Convert.ToInt32(numUpDownMileage.Value);
-            addCar.productionYear= Convert.ToInt32(numUpDownYear.Value);
-            addCar.engine = tbEngine.Text;
-            addCar.fuelType= fuel;
-            addCar.transmission= cbxTransmission.Text;
-            addCar.pricePerDay = price;
-            addCar.caretaker = cbxCaretaker.Text;
-
-            JObject rss = JObject.Parse(File.ReadAllText("database.json"));
-            JArray listOfCars = (JArray)rss["listOfCars"];
-            listOfCars.Add(addCar);
-
-            File.WriteAllText("database.json", rss.ToString());
-            MessageBox.Show($"{File.ReadAllText("database.json")}");
-            this.Hide();
+        private bool AllFilled()
+        {
+            if (tbLicensePlate.TextLength < 6)
+            {
+                MessageBox.Show("Type License Plate Number");
+                return false; 
+            }
+            if(tbBrand.TextLength < 2)
+            {
+                MessageBox.Show("Type Brand");
+                return false;
+            }
+            if(tbModel.TextLength < 2)
+            {
+                MessageBox.Show("Type Model");
+                return false;
+            }
+            if(tbEngine.TextLength == 0)
+            {
+                MessageBox.Show("Type Engine");
+                return false;
+            }
+            if(cbxTransmission.SelectedItem == null)
+            {
+                MessageBox.Show("Choose Transmission Type");
+                return false;
+            }
+            if(tbColor.TextLength < 3 )
+            {
+                MessageBox.Show("Type Color");
+                return false;
+            }
+            if (rbtnDiesel.Checked == false && rbtnGas.Checked == false && rbtnGasoline.Checked == false)
+            {
+                MessageBox.Show("Choose Fuel Type");
+                return false;
+            }
+            return true;
         }
 
 

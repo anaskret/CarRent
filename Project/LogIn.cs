@@ -32,6 +32,8 @@ namespace Project
                 this.Hide();
                 CarList m = new CarList();
                 m.Show();
+                ClientList c = new ClientList();
+                c.Show();
             }
             else
                 MessageBox.Show("Wrong password or login");
