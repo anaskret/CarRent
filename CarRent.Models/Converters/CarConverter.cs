@@ -44,8 +44,25 @@ namespace CarRent.Models.Converters
                 Mileage = car.Mileage,
                 IsDeleted = car.IsDeleted,
                 WorkerId = car.WorkerId,
-                //WorkerName = car.Worker.FullName(),
+               // WorkerName = car.Worker.FullName(),
                 Description = car.Description()
+            };
+        }
+
+        public Car FromUpdateCarDtoToCar(UpdateCarDto updateCarDto)
+        {
+            return new Car
+            {
+                LicensePlateNumber = updateCarDto.LicensePlateNumber,
+                Brand = updateCarDto.Brand,
+                Model = updateCarDto.Model,
+                Engine = updateCarDto.Engine,
+                Year = updateCarDto.Year,
+                Transmission = updateCarDto.Transmission,
+                FuelType = updateCarDto.FuelType,
+                Color = updateCarDto.Color,
+                PricePerDay = updateCarDto.PricePerDay,
+                Mileage = updateCarDto.Mileage
             };
         }
     }

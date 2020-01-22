@@ -36,7 +36,10 @@ namespace Project
                 c.Show();
             }
             else
+            { 
                 MessageBox.Show("Wrong password or login");
+                tbPassword.Text = "";
+            }
 
         }
 

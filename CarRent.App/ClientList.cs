@@ -39,7 +39,8 @@ namespace Project
 
             foreach (var item in clientService.GetAllClients().ToList())
             {
-                lvClientList.Items.Add(ManagerApp.ReadClientData(item));
+                if (!item.IsDeleted)
+                    lvClientList.Items.Add(ManagerApp.ReadClientData(item));
             }
         }
         private void btnBack_Click(object sender, EventArgs e)
@@ -52,7 +53,15 @@ namespace Project
             if (indices < 1)
                 return;
 
+            var provider = new Dependencies().Load();
+            var clientService = provider.GetService<IClientService>();
+
+            int id = Convert.ToInt32(lvClientList.SelectedItems[0].SubItems[0].Text);
+
+            MessageBox.Show(clientService.DeleteClient(id));
+
             lvClientList.SelectedItems[0].Remove();
+
         }
     }
 }

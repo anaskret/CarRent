@@ -29,6 +29,7 @@ namespace Project
             lvCarList.GridLines = true;
             lvCarList.FullRowSelect = true;
 
+            lvCarList.Columns.Add("ID", 24);
             lvCarList.Columns.Add("License plate", 100);
             lvCarList.Columns.Add("Brand", 100);
             lvCarList.Columns.Add("Model", 100);
@@ -38,14 +39,15 @@ namespace Project
             lvCarList.Columns.Add("Engine", 100);
             lvCarList.Columns.Add("Fuel type", 100);
             lvCarList.Columns.Add("Transmission", 100);
-            lvCarList.Columns.Add("Price per day", Right);
+            lvCarList.Columns.Add("Price per day", 100);
 
             var provider = new Dependencies().Load();
             var carService = provider.GetService<ICarService>();
-
+            
             foreach (var item in carService.GetAllCars().ToList())
             {
-                lvCarList.Items.Add(ManagerApp.ReadCarData(item));
+                if(!item.IsDeleted)
+                    lvCarList.Items.Add(ManagerApp.ReadCarData(item));
             }
            
         }
@@ -61,15 +63,15 @@ namespace Project
             if (indices < 1)
                 return;
 
-            /*var provider = new Dependencies().Load();
+            var provider = new Dependencies().Load();
             var carService = provider.GetService<ICarService>();
 
-            var car = new AddCarDto(); 
+            var car = new UpdateCarDto(); 
             car = GetItems();
 
             isUpdate = true;
-            var updateCar = new AddOrUpdateCar(car, isUpdate);
-            updateCar.Show();*/
+            var updateCar = new AddOrUpdateCar(car, isUpdate, Convert.ToInt32(lvCarList.SelectedItems[0].SubItems[0].Text));
+            updateCar.Show();
 
         }
 
@@ -89,7 +91,8 @@ namespace Project
 
             foreach (var item in carService.GetAllCars())
             {
-                lvCarList.Items.Add(ManagerApp.ReadCarData(item));
+                if (!item.IsDeleted)
+                    lvCarList.Items.Add(ManagerApp.ReadCarData(item));
             }
         }
 
@@ -98,29 +101,54 @@ namespace Project
             var provider = new Dependencies().Load();
             var carService = provider.GetService<ICarService>();
 
-            Dictionary<string, string> carFilterString = new Dictionary<string, string>();
-            if (tbxBrand.TextLength > 0) carFilterString.Add("Brand", tbxBrand.Text);
+            /*if (tbxBrand.TextLength > 0) carFilterString.Add("Brand", tbxBrand.Text);
+
             if (tbxModel.TextLength > 0) carFilterString.Add("Model", tbxModel.Text);
+
             if (tbxColor.TextLength > 0) carFilterString.Add("Color", tbxColor.Text);
+
             if (tbxEngine.TextLength > 0) carFilterString.Add("Engine", tbxEngine.Text);
-            if(combobxTransmission.SelectedItem != null) carFilterString.Add("Transmission", combobxTransmission.Text);
+
+            if (combobxTransmission.SelectedItem != null) carFilterString.Add("Transmission", combobxTransmission.Text);*/
+
+            /*carFilterString.Add("Brand", "Audi");
+            carFilterString.Add("Color", "Black");*/
 
             Dictionary<string, int[]> carFilterInt = new Dictionary<string, int[]>();
-            int[] year = new int[] { Convert.ToInt32(numUpDownMinYear.Value), Convert.ToInt32(numUpDownMinYear.Value) };
-            carFilterInt.Add("Year", year);
+            /* if (numUpDownMinYear.Value != 1950 && numUpDownMaxYear.Value != 2020)
+             {
+                 int[] year = { Convert.ToInt32(numUpDownMinYear.Value), Convert.ToInt32(numUpDownMaxYear.Value) };
+                 carFilterInt.Add("Year", year);
+             }
+             if (numUpDownMinMileage.Value > 0 && numUpDownMaxMileage.Value < 10000000)
+             { 
+                 int[] mileage = { Convert.ToInt32(numUpDownMinMileage.Value), Convert.ToInt32(numUpDownMaxMileage.Value) };
+                 carFilterInt.Add("Mileage", mileage); 
+             }
+             if (numUpDownMinPrice.Value > 1 && numUpDownMaxPrice.Value < 500)
+             {
+                 int[] price = { Convert.ToInt32(numUpDownMinPrice.Value), Convert.ToInt32(numUpDownMaxPrice.Value) };
+                 carFilterInt.Add("Price", price);
+             }*/
 
-            int[] mileage = new int[] { Convert.ToInt32(numUpDownMinMileage.Value), Convert.ToInt32(numUpDownMaxMileage.Value)};
-            carFilterInt.Add("Mileage", mileage);
-                
-            int[] price = new int[] { Convert.ToInt32(numUpDownMinPrice.Value), Convert.ToInt32(numUpDownMinPrice.Value) };
-            carFilterInt.Add("Price", price);
+            Dictionary<string, string> carFilterString = new Dictionary<string, string>();
+
+            carFilterString.Add("Brand", "Audi");
+            carFilterString.Add("Color", "Black");
 
             lvCarList.Items.Clear();
 
-            foreach (var item in carService.FilterCars(carFilterString, carFilterInt).ToList())
+            foreach (var item in carService.FilterCars(carFilterString, null))
             {
-                lvCarList.Items.Add(ManagerApp.ReadCarData(item));
+                if (!item.IsDeleted)
+                    lvCarList.Items.Add(ManagerApp.ReadCarData(item));
             }
+
+            tbxBrand.Text = "";
+            tbxModel.Text = "";
+            tbxColor.Text = "";
+            tbxEngine.Text = "";
+            combobxTransmission.Text = null;
         }
 
         private void btnDelete1_Click(object sender, EventArgs e)
@@ -129,11 +157,14 @@ namespace Project
             if (indices < 1)
                 return;
 
-            lvCarList.SelectedItems[0].Remove();
-            /*var provider = new Dependencies().Load();
+            var provider = new Dependencies().Load();
             var carService = provider.GetService<ICarService>();
 
-            carService.*/
+            int id = Convert.ToInt32(lvCarList.SelectedItems[0].SubItems[0].Text);
+
+            carService.DeleteCar(id);
+
+            lvCarList.SelectedItems[0].Remove();
         }
 
         private void lvCarList_DoubleClick(object sender, EventArgs e)
@@ -149,19 +180,19 @@ namespace Project
             updateCar.Show();*/
         }
 
-        private AddCarDto GetItems()
+        private UpdateCarDto GetItems()
         {
-            AddCarDto car = new AddCarDto();
-            car.LicensePlateNumber = lvCarList.SelectedItems[0].SubItems[0].Text;
-            car.Brand = lvCarList.SelectedItems[0].SubItems[1].Text;
-            car.Model = lvCarList.SelectedItems[0].SubItems[2].Text;
-            car.Color = lvCarList.SelectedItems[0].SubItems[3].Text;
-            car.Mileage = Convert.ToInt32(lvCarList.SelectedItems[0].SubItems[4].Text);
-            car.Year = Convert.ToInt32(lvCarList.SelectedItems[0].SubItems[5].Text);
-            car.Engine = lvCarList.SelectedItems[0].SubItems[6].Text;
-            car.FuelType = lvCarList.SelectedItems[0].SubItems[7].Text;
-            car.Transmission = lvCarList.SelectedItems[0].SubItems[8].Text;
-            car.PricePerDay = Convert.ToDecimal(lvCarList.SelectedItems[0].SubItems[9].Text);
+            UpdateCarDto car = new UpdateCarDto();
+            car.LicensePlateNumber = lvCarList.SelectedItems[0].SubItems[1].Text;
+            car.Brand = lvCarList.SelectedItems[0].SubItems[2].Text;
+            car.Model = lvCarList.SelectedItems[0].SubItems[3].Text;
+            car.Color = lvCarList.SelectedItems[0].SubItems[4].Text;
+            car.Mileage = Convert.ToInt32(lvCarList.SelectedItems[0].SubItems[5].Text);
+            car.Year = Convert.ToInt32(lvCarList.SelectedItems[0].SubItems[6].Text);
+            car.Engine = lvCarList.SelectedItems[0].SubItems[7].Text;
+            car.FuelType = lvCarList.SelectedItems[0].SubItems[8].Text;
+            car.Transmission = lvCarList.SelectedItems[0].SubItems[9].Text;
+            car.PricePerDay = Convert.ToDecimal(lvCarList.SelectedItems[0].SubItems[10].Text);
 
             return car;
         }

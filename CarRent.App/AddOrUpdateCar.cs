@@ -17,17 +17,19 @@ namespace Project
 {
     public partial class AddOrUpdateCar : Form
     {
-        private readonly CarService car;
+        private readonly UpdateCarDto car;
         private readonly bool isUpdate;
+        private readonly int id;
 
         public AddOrUpdateCar(bool isUpdate)
         {
             InitializeComponent();
         }
-        public AddOrUpdateCar(CarService car, bool isUpdate)
+        public AddOrUpdateCar(UpdateCarDto car, bool isUpdate, int id)
         {
             this.car = car;
             this.isUpdate = isUpdate;
+            this.id = id;
             InitializeComponent();
         }
 
@@ -38,12 +40,12 @@ namespace Project
             {
                 lblAddData.Text = "Update Data";
                 btnAdd.Text = "Update";
-                tbLicensePlate.Text = car.LicensePlate;
+                tbLicensePlate.Text = car.LicensePlateNumber;
                 tbBrand.Text = car.Brand;
                 tbModel.Text = car.Model;
                 tbColor.Text = car.Color;
                 numUpDownMileage.Value = car.Mileage;
-                numUpDownYear.Value = car.ProductionYear;
+                numUpDownYear.Value = car.Year;
                 tbEngine.Text = car.Engine;
 
                 if (car.FuelType == "Diesel")
@@ -78,15 +80,22 @@ namespace Project
 
             var provider = new Dependencies().Load();
             ICarService carService = provider.GetService<ICarService>();
-            var car = AddCarFromForm();
 
-            carService.AddCar(1, car);
-
-            if (!isUpdate)
+            if (isUpdate)
             {
-               
+                var carUpdate = UpdateCarFromForm();
+                carService.UpdateCar(id, carUpdate);
+                this.Hide();
+
             }
-            this.Hide();
+            else
+            {
+                var carAdd = AddCarFromForm();
+                carService.AddCar(carAdd);
+
+
+                this.Hide();
+            }
         }
          
         private AddCarDto AddCarFromForm()
@@ -111,6 +120,29 @@ namespace Project
 
             return addCar;
         }
+        private UpdateCarDto UpdateCarFromForm()
+        {
+            var updateCar = new UpdateCarDto();
+
+
+            string fuel = ManagerApp.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
+
+            decimal price = ManagerApp.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
+
+            updateCar.LicensePlateNumber = tbLicensePlate.Text;
+            updateCar.Brand = tbBrand.Text;
+            updateCar.Model = tbModel.Text;
+            updateCar.Color = tbColor.Text;
+            updateCar.Mileage = Convert.ToInt32(numUpDownMileage.Value);
+            updateCar.Year = Convert.ToInt32(numUpDownYear.Value);
+            updateCar.Engine = tbEngine.Text;
+            updateCar.FuelType = fuel;
+            updateCar.Transmission = cbxTransmission.Text;
+            updateCar.PricePerDay = price;
+
+            return updateCar;
+        }
+
 
         private bool AllFilled()
         {

@@ -10,31 +10,33 @@ namespace Project
     {
         public static ListViewItem ReadCarData(GetCarDto obj)
         {
-            string[] arr = new string[10];
-            arr[0] = obj.LicensePlateNumber;
-            arr[1] = obj.Brand;
-            arr[2] = obj.Model;
-            arr[3] = obj.Color;
-            arr[4] = obj.Mileage+""; 
-            arr[5] = obj.Year+"";
-            arr[6] = obj.Engine;
-            arr[7] = obj.FuelType;
-            arr[8] = obj.Transmission;
-            arr[9] = obj.PricePerDay+"";
+            string[] arr = new string[11];
+            arr[0] = obj.Id+"";
+            arr[1] = obj.LicensePlateNumber;
+            arr[2] = obj.Brand;
+            arr[3] = obj.Model;
+            arr[4] = obj.Color;
+            arr[5] = obj.Mileage+""; 
+            arr[6] = obj.Year+"";
+            arr[7] = obj.Engine;
+            arr[8] = obj.FuelType;
+            arr[9] = obj.Transmission;
+            arr[10] = obj.PricePerDay+"";
 
             var item = new ListViewItem(arr);
             return item;
         }
         public static ListViewItem ReadClientData(GetClientDto obj)
         {
-            string[] arr = new string[6];
-            arr[0] = obj.FirstName;
-            arr[1] = obj.LastName;
-            arr[2] = obj.PhoneNumber;
-            arr[3] = obj.Email;
-            arr[4] = obj.DriversLicenseNumber;
-            arr[5] = obj.Pesel;
-
+            string[] arr = new string[7];
+            arr[0] = obj.Id+"";
+            arr[1] = obj.FirstName;
+            arr[2] = obj.LastName;
+            arr[3] = obj.PhoneNumber;
+            arr[4] = obj.Email;
+            arr[5] = obj.DriversLicenseNumber;
+            arr[6] = obj.Pesel;
+            
             var item = new ListViewItem(arr);
             return item;
         }
