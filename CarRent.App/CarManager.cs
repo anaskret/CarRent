@@ -25,18 +25,6 @@ namespace Project
 
         public static ListView LvCarList { get; private set; }
 
-
-        public static string LicensePlateNumber { get; set; }
-        public static string Brand { get; set; }
-        public static string Model { get; set; }
-        public static string Color { get; set; }
-        public static int Mileage { get; set; }
-        public static int Year { get; set; }
-        public static string Engine { get; set; }
-        public static string FuelType { get; set; }
-        public static string Transmission { get; set; }
-        public static decimal PricePerDay { get; set; }
-
         public static ListViewItem ReadCarData(GetCarDto obj)
         {
             string[] arr = new string[11];
@@ -102,7 +90,7 @@ namespace Project
             foreach (var item in carService.GetAllCars().ToList())
             {
                 if (!item.IsDeleted)
-                    LvCarList.Items.Add(CarManager.ReadCarData(item));
+                    LvCarList.Items.Add(ReadCarData(item));
             }
         }
 

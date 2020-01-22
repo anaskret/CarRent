@@ -37,6 +37,8 @@ namespace Project
 
         private void AddUpdateCar_Load(object sender, EventArgs e)
         {
+            AddData.SeedData();
+
             if (isUpdate == true)
             {
                 lblAddData.Text = "Update Data";
