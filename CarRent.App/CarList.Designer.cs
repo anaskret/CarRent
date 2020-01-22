@@ -552,6 +552,8 @@
             this.Controls.Add(this.numUpDownMaxMileage);
             this.Controls.Add(this.lvCarList);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "CarList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CarList";

@@ -110,8 +110,20 @@ namespace CarRent.Repositories
 
                     }
                 }
+                if (stringQueries == null) { stringQueries = new Dictionary<string, string>(); }
+                if (intQueries == null) { intQueries = new Dictionary<string, int[]>(); }
+                int queryCount = (stringQueries.Count + intQueries.Count);
 
-                List<Car> finalResult = duplicatesResult.Distinct().ToList();
+                List<Car> finalResult = new List<Car>();
+
+                var grouped = duplicatesResult.GroupBy(i => i);
+                foreach (var g in grouped)
+                {
+                    if (g.Count() == queryCount)
+                    {
+                        finalResult.Add(g.Key);
+                    }
+                }
                 return finalResult;
         }
 

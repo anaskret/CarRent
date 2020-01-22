@@ -23,16 +23,8 @@ namespace Project
 
         private void ClientList_Load(object sender, EventArgs e)
         {
-            lvClientList.View = View.Details;
-            lvClientList.GridLines = true;
-            lvClientList.FullRowSelect = true;
-
-            lvClientList.Columns.Add("First Name", 150);
-            lvClientList.Columns.Add("Last Name", 150);
-            lvClientList.Columns.Add("Phone Number", 150);
-            lvClientList.Columns.Add("Email", 150);
-            lvClientList.Columns.Add("Drivers License Number", 150);
-            lvClientList.Columns.Add("PESEL",150);
+            var clientManager = new ClientManager(lvClientList);
+            ClientManager.CreateListView();
 
             var provider = new Dependencies().Load();
             var clientService = provider.GetService<IClientService>();
@@ -40,13 +32,14 @@ namespace Project
             foreach (var item in clientService.GetAllClients().ToList())
             {
                 if (!item.IsDeleted)
-                    lvClientList.Items.Add(ManagerApp.ReadClientData(item));
+                    lvClientList.Items.Add(ClientManager.ReadClientData(item));
             }
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var indices = lvClientList.SelectedItems.Count;

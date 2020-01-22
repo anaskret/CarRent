@@ -31,19 +31,19 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.lblAddData = new System.Windows.Forms.Label();
             this.lblLicensePlate = new System.Windows.Forms.Label();
-            this.tbLicensePlate = new System.Windows.Forms.TextBox();
+            this.tbxLicensePlate = new System.Windows.Forms.TextBox();
             this.lblBrand = new System.Windows.Forms.Label();
-            this.tbBrand = new System.Windows.Forms.TextBox();
+            this.tbxBrand = new System.Windows.Forms.TextBox();
             this.lblModel = new System.Windows.Forms.Label();
-            this.tbModel = new System.Windows.Forms.TextBox();
+            this.tbxModel = new System.Windows.Forms.TextBox();
             this.lblEngine = new System.Windows.Forms.Label();
-            this.tbEngine = new System.Windows.Forms.TextBox();
+            this.tbxEngine = new System.Windows.Forms.TextBox();
             this.lblProductionYear = new System.Windows.Forms.Label();
             this.lblTransmission = new System.Windows.Forms.Label();
             this.lblFuelType = new System.Windows.Forms.Label();
             this.lblColor = new System.Windows.Forms.Label();
             this.cbxTransmission = new System.Windows.Forms.ComboBox();
-            this.tbColor = new System.Windows.Forms.TextBox();
+            this.tbxColor = new System.Windows.Forms.TextBox();
             this.rbtnDiesel = new System.Windows.Forms.RadioButton();
             this.rbtnGasoline = new System.Windows.Forms.RadioButton();
             this.rbtnGas = new System.Windows.Forms.RadioButton();
@@ -97,14 +97,14 @@
             this.lblLicensePlate.TabIndex = 2;
             this.lblLicensePlate.Text = "License Plate Number:";
             // 
-            // tbLicensePlate
+            // tbxLicensePlate
             // 
-            this.tbLicensePlate.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbLicensePlate.Location = new System.Drawing.Point(180, 83);
-            this.tbLicensePlate.MaxLength = 8;
-            this.tbLicensePlate.Name = "tbLicensePlate";
-            this.tbLicensePlate.Size = new System.Drawing.Size(161, 23);
-            this.tbLicensePlate.TabIndex = 4;
+            this.tbxLicensePlate.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbxLicensePlate.Location = new System.Drawing.Point(180, 83);
+            this.tbxLicensePlate.MaxLength = 8;
+            this.tbxLicensePlate.Name = "tbxLicensePlate";
+            this.tbxLicensePlate.Size = new System.Drawing.Size(161, 23);
+            this.tbxLicensePlate.TabIndex = 4;
             // 
             // lblBrand
             // 
@@ -117,12 +117,12 @@
             this.lblBrand.Text = "Brand:";
             this.lblBrand.Click += new System.EventHandler(this.label1_Click);
             // 
-            // tbBrand
+            // tbxBrand
             // 
-            this.tbBrand.Location = new System.Drawing.Point(180, 114);
-            this.tbBrand.Name = "tbBrand";
-            this.tbBrand.Size = new System.Drawing.Size(161, 23);
-            this.tbBrand.TabIndex = 6;
+            this.tbxBrand.Location = new System.Drawing.Point(180, 114);
+            this.tbxBrand.Name = "tbxBrand";
+            this.tbxBrand.Size = new System.Drawing.Size(161, 23);
+            this.tbxBrand.TabIndex = 6;
             // 
             // lblModel
             // 
@@ -134,12 +134,12 @@
             this.lblModel.TabIndex = 7;
             this.lblModel.Text = "Model:";
             // 
-            // tbModel
+            // tbxModel
             // 
-            this.tbModel.Location = new System.Drawing.Point(180, 144);
-            this.tbModel.Name = "tbModel";
-            this.tbModel.Size = new System.Drawing.Size(161, 23);
-            this.tbModel.TabIndex = 8;
+            this.tbxModel.Location = new System.Drawing.Point(180, 144);
+            this.tbxModel.Name = "tbxModel";
+            this.tbxModel.Size = new System.Drawing.Size(161, 23);
+            this.tbxModel.TabIndex = 8;
             // 
             // lblEngine
             // 
@@ -151,12 +151,12 @@
             this.lblEngine.TabIndex = 9;
             this.lblEngine.Text = "Engine:";
             // 
-            // tbEngine
+            // tbxEngine
             // 
-            this.tbEngine.Location = new System.Drawing.Point(180, 176);
-            this.tbEngine.Name = "tbEngine";
-            this.tbEngine.Size = new System.Drawing.Size(161, 23);
-            this.tbEngine.TabIndex = 10;
+            this.tbxEngine.Location = new System.Drawing.Point(180, 176);
+            this.tbxEngine.Name = "tbxEngine";
+            this.tbxEngine.Size = new System.Drawing.Size(161, 23);
+            this.tbxEngine.TabIndex = 10;
             // 
             // lblProductionYear
             // 
@@ -210,16 +210,17 @@
             this.cbxTransmission.Size = new System.Drawing.Size(161, 23);
             this.cbxTransmission.TabIndex = 20;
             // 
-            // tbColor
+            // tbxColor
             // 
-            this.tbColor.Location = new System.Drawing.Point(537, 83);
-            this.tbColor.Name = "tbColor";
-            this.tbColor.Size = new System.Drawing.Size(161, 23);
-            this.tbColor.TabIndex = 21;
+            this.tbxColor.Location = new System.Drawing.Point(537, 83);
+            this.tbxColor.Name = "tbxColor";
+            this.tbxColor.Size = new System.Drawing.Size(161, 23);
+            this.tbxColor.TabIndex = 21;
             // 
             // rbtnDiesel
             // 
             this.rbtnDiesel.AutoSize = true;
+            this.rbtnDiesel.Checked = true;
             this.rbtnDiesel.Location = new System.Drawing.Point(539, 176);
             this.rbtnDiesel.Name = "rbtnDiesel";
             this.rbtnDiesel.Size = new System.Drawing.Size(56, 19);
@@ -236,7 +237,6 @@
             this.rbtnGasoline.Name = "rbtnGasoline";
             this.rbtnGasoline.Size = new System.Drawing.Size(70, 19);
             this.rbtnGasoline.TabIndex = 24;
-            this.rbtnGasoline.TabStop = true;
             this.rbtnGasoline.Text = "Gasoline";
             this.rbtnGasoline.UseVisualStyleBackColor = true;
             // 
@@ -247,7 +247,6 @@
             this.rbtnGas.Name = "rbtnGas";
             this.rbtnGas.Size = new System.Drawing.Size(44, 19);
             this.rbtnGas.TabIndex = 25;
-            this.rbtnGas.TabStop = true;
             this.rbtnGas.Text = "Gas";
             this.rbtnGas.UseVisualStyleBackColor = true;
             // 
@@ -409,7 +408,7 @@
             this.Controls.Add(this.lblZloty);
             this.Controls.Add(this.numUpDownPricePerDayAfterComa);
             this.Controls.Add(this.lblDot);
-            this.Controls.Add(this.tbColor);
+            this.Controls.Add(this.tbxColor);
             this.Controls.Add(this.numUpDownMileage);
             this.Controls.Add(this.lblAddData);
             this.Controls.Add(this.numUpDownYear);
@@ -418,14 +417,16 @@
             this.Controls.Add(this.cbxTransmission);
             this.Controls.Add(this.lblTransmission);
             this.Controls.Add(this.lblProductionYear);
-            this.Controls.Add(this.tbEngine);
+            this.Controls.Add(this.tbxEngine);
             this.Controls.Add(this.lblEngine);
-            this.Controls.Add(this.tbModel);
-            this.Controls.Add(this.tbBrand);
+            this.Controls.Add(this.tbxModel);
+            this.Controls.Add(this.tbxBrand);
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.lblBrand);
-            this.Controls.Add(this.tbLicensePlate);
+            this.Controls.Add(this.tbxLicensePlate);
             this.Controls.Add(this.lblLicensePlate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "AddOrUpdateCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCar";
@@ -444,13 +445,13 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblAddData;
         private System.Windows.Forms.Label lblLicensePlate;
-        private System.Windows.Forms.TextBox tbLicensePlate;
+        private System.Windows.Forms.TextBox tbxLicensePlate;
         private System.Windows.Forms.Label lblBrand;
-        private System.Windows.Forms.TextBox tbBrand;
+        private System.Windows.Forms.TextBox tbxBrand;
         private System.Windows.Forms.Label lblModel;
-        private System.Windows.Forms.TextBox tbModel;
+        private System.Windows.Forms.TextBox tbxModel;
         private System.Windows.Forms.Label lblEngine;
-        private System.Windows.Forms.TextBox tbEngine;
+        private System.Windows.Forms.TextBox tbxEngine;
         private System.Windows.Forms.Label lblProductionYear;
         private System.Windows.Forms.Label lblTransmission;
         private System.Windows.Forms.Label lblFuelType;
@@ -470,5 +471,6 @@
         private System.Windows.Forms.NumericUpDown numUpDownPricePerDayAfterComa;
         private System.Windows.Forms.Label lblZloty;
         private System.Windows.Forms.NumericUpDown numUpDownMileage;
+        private System.Windows.Forms.TextBox tbxColor;
     }
 }

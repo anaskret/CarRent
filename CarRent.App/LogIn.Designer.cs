@@ -103,6 +103,7 @@
             // LogIn
             // 
             this.AcceptButton = this.btnLogIn;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(282, 268);
             this.Controls.Add(this.btnLogIn);
@@ -111,6 +112,9 @@
             this.Controls.Add(this.lbLogin);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbLogin);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "LogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);

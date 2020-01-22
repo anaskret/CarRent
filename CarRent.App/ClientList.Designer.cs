@@ -79,6 +79,8 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lvClientList);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "ClientList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientList";

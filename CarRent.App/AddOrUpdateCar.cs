@@ -25,6 +25,7 @@ namespace Project
         {
             InitializeComponent();
         }
+
         public AddOrUpdateCar(UpdateCarDto car, bool isUpdate, int id)
         {
             this.car = car;
@@ -40,13 +41,13 @@ namespace Project
             {
                 lblAddData.Text = "Update Data";
                 btnAdd.Text = "Update";
-                tbLicensePlate.Text = car.LicensePlateNumber;
-                tbBrand.Text = car.Brand;
-                tbModel.Text = car.Model;
+                tbxLicensePlate.Text = car.LicensePlateNumber;
+                tbxBrand.Text = car.Brand;
+                tbxModel.Text = car.Model;
                 tbColor.Text = car.Color;
                 numUpDownMileage.Value = car.Mileage;
                 numUpDownYear.Value = car.Year;
-                tbEngine.Text = car.Engine;
+                tbxEngine.Text = car.Engine;
 
                 if (car.FuelType == "Diesel")
                 {
@@ -75,8 +76,6 @@ namespace Project
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //Dodawanie/Modyfikowanie
-            if (!AllFilled())
-                return;
 
             var provider = new Dependencies().Load();
             ICarService carService = provider.GetService<ICarService>();
@@ -84,13 +83,24 @@ namespace Project
             if (isUpdate)
             {
                 var carUpdate = UpdateCarFromForm();
+                if (!carUpdate.ValidateCarInput(carUpdate))
+                {
+                    MessageBox.Show("Error! Wrong or empty value");
+                    return; 
+                }
                 carService.UpdateCar(id, carUpdate);
+
                 this.Hide();
 
             }
             else
             {
                 var carAdd = AddCarFromForm();
+                if (!carAdd.ValidateCarInput(carAdd))
+                {
+                    MessageBox.Show("Error! Wrong or empty value");
+                    return;
+                }
                 carService.AddCar(carAdd);
 
 
@@ -103,17 +113,17 @@ namespace Project
             var addCar = new AddCarDto();
 
 
-            string fuel = ManagerApp.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
+            string fuel = CarManager.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
 
-            decimal price = ManagerApp.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
+            decimal price = CarManager.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
 
-            addCar.LicensePlateNumber = tbLicensePlate.Text;
-            addCar.Brand = tbBrand.Text;
-            addCar.Model = tbModel.Text;
-            addCar.Color = tbColor.Text;
+            addCar.LicensePlateNumber = tbxLicensePlate.Text;
+            addCar.Brand = tbxBrand.Text;
+            addCar.Model = tbxModel.Text;
+            addCar.Color = tbxColor.Text;
             addCar.Mileage = Convert.ToInt32(numUpDownMileage.Value);
             addCar.Year = Convert.ToInt32(numUpDownYear.Value);
-            addCar.Engine = tbEngine.Text;
+            addCar.Engine = tbxEngine.Text;
             addCar.FuelType = fuel;
             addCar.Transmission = cbxTransmission.Text;
             addCar.PricePerDay = price;
@@ -125,17 +135,17 @@ namespace Project
             var updateCar = new UpdateCarDto();
 
 
-            string fuel = ManagerApp.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
+            string fuel = CarManager.WhichFuel(rbtnDiesel.Checked, rbtnGasoline.Checked);
 
-            decimal price = ManagerApp.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
+            decimal price = CarManager.CombinePrice(numUpDownPricePerDay.Value, numUpDownPricePerDayAfterComa.Value);
 
-            updateCar.LicensePlateNumber = tbLicensePlate.Text;
-            updateCar.Brand = tbBrand.Text;
-            updateCar.Model = tbModel.Text;
+            updateCar.LicensePlateNumber = tbxLicensePlate.Text;
+            updateCar.Brand = tbxBrand.Text;
+            updateCar.Model = tbxModel.Text;
             updateCar.Color = tbColor.Text;
             updateCar.Mileage = Convert.ToInt32(numUpDownMileage.Value);
             updateCar.Year = Convert.ToInt32(numUpDownYear.Value);
-            updateCar.Engine = tbEngine.Text;
+            updateCar.Engine = tbxEngine.Text;
             updateCar.FuelType = fuel;
             updateCar.Transmission = cbxTransmission.Text;
             updateCar.PricePerDay = price;
@@ -146,22 +156,22 @@ namespace Project
 
         private bool AllFilled()
         {
-            if (tbLicensePlate.TextLength < 6)
+            if (tbxLicensePlate.TextLength < 6)
             {
                 MessageBox.Show("Type License Plate Number");
                 return false; 
             }
-            if(tbBrand.TextLength < 2)
+            if(tbxBrand.TextLength < 2)
             {
                 MessageBox.Show("Type Brand");
                 return false;
             }
-            if(tbModel.TextLength < 2)
+            if(tbxModel.TextLength < 2)
             {
                 MessageBox.Show("Type Model");
                 return false;
             }
-            if(tbEngine.TextLength == 0)
+            if(tbxEngine.TextLength == 0)
             {
                 MessageBox.Show("Type Engine");
                 return false;
@@ -171,7 +181,7 @@ namespace Project
                 MessageBox.Show("Choose Transmission Type");
                 return false;
             }
-            if(tbColor.TextLength < 3 )
+            if(tbxColor.TextLength < 3 )
             {
                 MessageBox.Show("Type Color");
                 return false;
