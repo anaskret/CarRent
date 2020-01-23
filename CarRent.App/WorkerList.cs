@@ -89,5 +89,10 @@ namespace car_fleet
             var m = new Menu();
             m.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

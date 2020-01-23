@@ -61,5 +61,10 @@ namespace CarRent.App
             OrdersList ol = new OrdersList();
             ol.Show();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

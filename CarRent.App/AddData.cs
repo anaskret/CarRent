@@ -23,12 +23,12 @@ namespace CarRent.App
 
             if (coordinatorService.GetCoordinator(1) == null)
             {
-                var coordinator = new AddCoordinatorDto
+               var coordinator = new AddCoordinatorDto
                 {
                     Login = "admin",
                     Password = "admin",
                     FirstName = "admin",
-                    LastName = "admin",
+                    LastName = "adminski",
                     Email = "admin@admin.com",
                     PhoneNumber = "999999999"
                 };

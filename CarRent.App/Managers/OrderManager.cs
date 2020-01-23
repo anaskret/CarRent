@@ -31,6 +31,8 @@ namespace CarRent.App
             CarService = provider.GetService<ICarService>();
 
             LoadWorkerListProperty();
+            var date = new DateTime(2020, 11, 11);
+            DocumentService.AddOrder(1, 4, 4, new AddOrderDto() {DeliveryPlace= "test2",OrderDate=date,RentalTime=15 });
             LoadDataToWorkerListView(DocumentService.GetAllOrders());
         }
 
@@ -94,7 +96,8 @@ namespace CarRent.App
         public static void LoadDataToWorkerListView(IEnumerable<GetOrderDto> data)
         {
             string[] arr = new string[8];
-
+            var test = data.ToList();
+            MessageBox.Show(test.Count()+"");
             foreach (var obj in data)
             {  
                 arr[0] = obj.Id + "";

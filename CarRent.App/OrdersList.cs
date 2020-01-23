@@ -57,5 +57,10 @@ namespace car_fleet
             var m = new Menu();
             m.Show();
         }
+
+        private void lvOrderList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
