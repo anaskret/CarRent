@@ -155,6 +155,7 @@
             this.Controls.Add(this.tbFirstName);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "WorkerAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WorkerAddForm";
             this.Load += new System.EventHandler(this.WorkerAddForm_Load);
             this.ResumeLayout(false);
