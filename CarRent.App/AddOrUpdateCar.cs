@@ -86,7 +86,7 @@ namespace Project
                 var carUpdate = UpdateCarFromForm();
                 if (!carUpdate.Validate())
                 {
-                    MessageBox.Show("Error! Wrong or empty value");
+                    MessageBox.Show("Validation error");
                     return; 
                 }
                 carService.UpdateCar(id, carUpdate);
@@ -99,7 +99,7 @@ namespace Project
                 var carAdd = AddCarFromForm();
                 if (!carAdd.Validate())
                 {
-                    MessageBox.Show("Error! Wrong or empty value");
+                    MessageBox.Show("Validation error");
                     return;
                 }
                 carService.AddCar(carAdd);

@@ -18,7 +18,6 @@ namespace Project
     {
         public LogIn()
         {
-            AddData.SeedData();
             InitializeComponent();
         }
 
@@ -61,6 +60,11 @@ namespace Project
                 tbPassword.UseSystemPasswordChar = true;
                 cbShowHide.Text = "Show Password";
             }
+        }
+
+        private void LogIn_Load(object sender, EventArgs e)
+        {
+            AddData.SeedData();
         }
     }
 }

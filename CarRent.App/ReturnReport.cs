@@ -33,15 +33,21 @@ namespace CarRent.App
             var provider = new Dependencies().Load();
             var documentService = provider.GetService<IDocumentService>();
 
-            var documentAdd = new AddReturnReportDto();
+            var returnAdd = new AddReturnReportDto();
 
             var date = new DateTime(Convert.ToInt32(numUpDownYear), Convert.ToInt32(numUpDownMonth), Convert.ToInt32(numUpDownDay));
 
-            documentAdd.DrivenDistance = Convert.ToInt32(numUpDownDrivenDistance.Value);
-            documentAdd.IsDamaged = checkbxIsDamaged.Checked;
-            documentAdd.ReturnDate = date;
+            returnAdd.DrivenDistance = Convert.ToInt32(numUpDownDrivenDistance.Value);
+            returnAdd.IsDamaged = checkbxIsDamaged.Checked;
+            returnAdd.ReturnDate = date;
 
-            documentService.AddReturnReport(id, documentAdd);
+            if (!returnAdd.Validate())
+            {
+                MessageBox.Show("Validation error");
+                return;
+            }
+
+            documentService.AddReturnReport(id, returnAdd);
 
             this.Hide();
         }

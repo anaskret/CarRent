@@ -18,19 +18,22 @@ namespace CarRent.App
         public static void SeedData()
         {
             var provider = new Dependencies().Load();
-            ICoordinatorService coordinatorService = provider.GetService<ICoordinatorService>();
+            
+            var coordinatorService = provider.GetService<ICoordinatorService>();
 
-            if(coordinatorService.GetCoordinator(1) == null)
+            if (coordinatorService.GetCoordinator(1) == null)
             {
-                MessageBox.Show("");
-                /*var coordinator = new AddCoordinatorDto();
+                var coordinator = new AddCoordinatorDto
+                {
+                    Login = "admin",
+                    Password = "admin",
+                    FirstName = "admin",
+                    LastName = "admin",
+                    Email = "admin@admin.com",
+                    PhoneNumber = "999999999"
+                };
 
-                coordinator.Login = "admin";
-                coordinator.Password = "admin";
-                coordinator.FirstName = "admin";
-                coordinator.LastName = "admin";
-                coordinator.Email = "admin@admin.com";*/
-
+                coordinatorService.Add(coordinator);
             }
 
             var carService = provider.GetService<ICarService>();
@@ -139,83 +142,86 @@ namespace CarRent.App
                 carService.AddCar(car);
             }
 
+
+
             var clientService = provider.GetService<IClientService>();
-            if (clientService.GetAllClients().ToList().Count == 0)
-            {
-                var client = new AddClientDto
-                {
-                    FirstName = "Angelika",
-                    LastName = "Maciejewska",
-                    PhoneNumber = "53 967 04 00",
-                    Email = "AngelikaMaciejewska@armyspy.com",
-                    DriversLicenseNumber = "45809765",
-                    IdNumber = "824997591",
-                    Pesel = "93070222544"
-                };
+            
 
-                clientService.AddClient(client);
+             if (clientService.GetAllClients().ToList().Count == 0)
+               {
+                   var client = new AddClientDto
+                   {
+                       FirstName = "Angelika",
+                       LastName = "Maciejewska",
+                       PhoneNumber = "53 967 04 00",
+                       Email = "AngelikaMaciejewska@armyspy.com",
+                       DriversLicenseNumber = "45809765",
+                       IdNumber = "824997591",
+                       Pesel = "93070222544"
+                   };
 
-                client.FirstName = "Karol";
-                client.LastName = "Jabłoński";
-                client.PhoneNumber = "72 731 53 07";
-                client.Email = "KarolJablonski@armyspy.com";
-                client.DriversLicenseNumber = "331304196";
-                client.IdNumber = "825480638";
-                client.Pesel = "62020367914";
+                   clientService.AddClient(client);
 
-                clientService.AddClient(client);
+                    client.FirstName = "Karol";
+                    client.LastName = "Jablonski";
+                    client.PhoneNumber = "727315307";
+                    client.Email = "KarolJablonski@armyspy.com";
+                    client.DriversLicenseNumber = "331304196";
+                    client.IdNumber = "825480638";
+                    client.Pesel = "62020367914";
 
-                client.FirstName = "Elżbieta ";
-                client.LastName = "Szczepańska";
-                client.PhoneNumber = "78 681 52 54";
-                client.Email = "ElzbietaSzczepanska@teleworm.us";
-                client.DriversLicenseNumber = "73630362";
-                client.IdNumber = "831290266";
-                client.Pesel = "93070222544";
+                    clientService.AddClient(client);
 
-                clientService.AddClient(client)
+                    client.FirstName = "Elzbieta";
+                    client.LastName = "Szczepanska";
+                    client.PhoneNumber = "786815254";
+                    client.Email = "ElzbietaSzczepanska@teleworm.us";
+                    client.DriversLicenseNumber = "73630362";
+                    client.IdNumber = "831290266";
+                    client.Pesel = "93070222544";
 
-                    ; client.FirstName = "Angelika";
-                client.LastName = "Maciejewska";
-                client.PhoneNumber = "53 967 04 00";
-                client.Email = "AngelikaMaciejewska@armyspy.com";
-                client.DriversLicenseNumber = "45809765";
-                client.IdNumber = "824997591";
-                client.Pesel = "49011918485";
+                    clientService.AddClient(client);
+                    client.FirstName = "Angelika";
+                    client.LastName = "Maciejewska";
+                    client.PhoneNumber = "539670400";
+                    client.Email = "AngelikaMaciejewska@armyspy.com";
+                    client.DriversLicenseNumber = "45809765";
+                    client.IdNumber = "824997591";
+                    client.Pesel = "49011918485";
 
-                clientService.AddClient(client);
+                    clientService.AddClient(client);
 
-                client.FirstName = "Władysława ";
-                client.LastName = "MacMichalskaiejewska";
-                client.PhoneNumber = "51 286 32 56";
-                client.Email = "WladyslawaMichalska@armyspy.com";
-                client.DriversLicenseNumber = "798628527";
-                client.IdNumber = "822171567";
-                client.Pesel = "65072312901";
+                    client.FirstName = "Wladyslawa";
+                    client.LastName = "MacMichalskaiejewska";
+                    client.PhoneNumber = "512863256";
+                    client.Email = "WladyslawaMichalska@armyspy.com";
+                    client.DriversLicenseNumber = "798628527";
+                    client.IdNumber = "822171567";
+                    client.Pesel = "65072312901";
 
-                clientService.AddClient(client);
+                    clientService.AddClient(client);
 
-                client.FirstName = "Basia";
-                client.LastName = "Majewska";
-                client.PhoneNumber = "79 664 09 72";
-                client.Email = "BasiaMajewska@teleworm.us";
-                client.DriversLicenseNumber = "713825975";
-                client.IdNumber = "182399162";
-                client.Pesel = "79080548849";
+                    client.FirstName = "Basia";
+                    client.LastName = "Majewska";
+                    client.PhoneNumber = "796640972";
+                    client.Email = "BasiaMajewska@teleworm.us";
+                    client.DriversLicenseNumber = "713825975";
+                    client.IdNumber = "182399162";
+                    client.Pesel = "79080548849";
 
-                clientService.AddClient(client);
+                    clientService.AddClient(client);
 
-                client.FirstName = "Antoni";
-                client.LastName = "Jasiński";
-                client.PhoneNumber = "53 967 04 00";
-                client.Email = "AntoniJasinski@jourrapide.com";
-                client.DriversLicenseNumber = "461293795";
-                client.IdNumber = "159124524";
-                client.Pesel = "42081913792";
+                    client.FirstName = "Antoni";
+                    client.LastName = "Jasinski";
+                    client.PhoneNumber = "539670400";
+                    client.Email = "AntoniJasinski@jourrapide.com";
+                    client.DriversLicenseNumber = "461293795";
+                    client.IdNumber = "159124524";
+                    client.Pesel = "42081913792";
 
-                clientService.AddClient(client);
-            }
-
+                   clientService.AddClient(client);
+               }
+   
             var workerService = provider.GetService<IWorkerService>();
             if (workerService.GetAllWorkers().ToList().Count == 0)
             {
@@ -223,55 +229,60 @@ namespace CarRent.App
                 {
                     FirstName = "Iwona",
                     LastName = "Grabowska",
-                    PhoneNumber = "78 242 89 01",
+                    PhoneNumber = "782428901",
                     Email = "iwonagrabowska@carrent.com",
                     Salary = 3500
                 };
 
-                workerService.AddWorker(worker);
+                workerService.AddWorker(1, worker);
 
                 worker.FirstName = "Krystiana";
                 worker.LastName = "Nowakowska";
-                worker.PhoneNumber = "60 370 59 58";
+                worker.PhoneNumber = "603705958";
                 worker.Email = "krystiananowakowska@carrent.com";
                 worker.Salary = 200;
 
-                workerService.AddWorker(worker);
+                workerService.AddWorker(1, worker);
 
                 worker.FirstName = "Leokadia";
                 worker.LastName = "Grabowska";
-                worker.PhoneNumber = "72 919 13 49";
+                worker.PhoneNumber = "729191349";
+                worker.Email = "leokadiagrabowska@carrent.com";
                 worker.Salary = 4000;
 
-                workerService.AddWorker(worker);
+                workerService.AddWorker(1, worker);
 
-                worker.FirstName = "Rościsława";
+                worker.FirstName = "Roscislawa";
                 worker.LastName = "Kucharska";
-                worker.PhoneNumber = "78 464 68 93";
+                worker.PhoneNumber = "784646893";
+                worker.Email = "roscislawakucharsa@carrent.com";
                 worker.Salary = 3500;
 
-                workerService.AddWorker(worker);
+                workerService.AddWorker(1, worker);
 
                 worker.FirstName = "Frydrych";
                 worker.LastName = "Kowalczyk";
-                worker.PhoneNumber = "78 654 92 93";
+                worker.PhoneNumber = "786549293";
+                worker.Email = "frydrychkowalczyk@carrent.com";
                 worker.Salary = 3400;
 
-                workerService.AddWorker(worker);
+                workerService.AddWorker(1, worker);
 
                 worker.FirstName = "Bonifacy";
                 worker.LastName = "Olszewski";
-                worker.PhoneNumber = "66 717 45 34";
+                worker.PhoneNumber = "667174534";
+                worker.Email = "bonifacyolszewski@carrent.com";
                 worker.Salary = 3200;
 
-                workerService.AddWorker(worker);
+                workerService.AddWorker(1, worker);
 
                 worker.FirstName = "Gustaw";
                 worker.LastName = "Kowalski";
-                worker.PhoneNumber = "53 344 76 12";
+                worker.PhoneNumber = "533447612";
+                worker.Email = "gustawkowalski@carrent.com";
                 worker.Salary = 4200;
 
-                workerService.AddWorker(worker);
+                workerService.AddWorker(1, worker);
 
             }
 

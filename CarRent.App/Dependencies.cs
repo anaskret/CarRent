@@ -17,7 +17,7 @@ namespace CarRent.App
     {
 
         private IServiceCollection services = new ServiceCollection();
-        
+
         public IServiceProvider Load()
         {
             services.AddDbContext<CarRentDbContext>(options =>
@@ -47,9 +47,10 @@ namespace CarRent.App
             services.AddTransient<ICoordinatorRepository, CoordinatorRepository>();
             services.AddSingleton<ICoordinatorConverter, CoordinatorConverter>();
 
+
             return services.BuildServiceProvider();
         }
-        
+
 
     }
 }
