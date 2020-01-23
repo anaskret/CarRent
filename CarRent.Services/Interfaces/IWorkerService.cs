@@ -7,11 +7,11 @@ namespace CarRent.Services
 {
     public interface IWorkerService
     {
-        int AddWorker(int coordinatorId, AddWorkerDto addWorkerDto);
+        string AddWorker(int coordinatorId, AddWorkerDto addWorkerDto);
         GetWorkerDto GetWorker(int id);
         string DeleteWorker(int id);
         IEnumerable<GetWorkerDto> GetAllWorkers();
-        IEnumerable<GetWorkerDto> FilterWorkers(Dictionary<string, string> stringQueries, int[] salaryRange);
+        IEnumerable<GetWorkerDto> FilterWorkers(Dictionary<string, string> stringQueries, int[] salaryRange, int coordinatorId);
         GetWorkerDto UpdateWorker(int id, UpdateWorkerDto updateWorkerDto);
 
     }

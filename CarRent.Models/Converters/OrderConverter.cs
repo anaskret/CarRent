@@ -28,7 +28,7 @@ namespace CarRent.Models.Converters
                 DeliveryPlace = order.DeliveryPlace,
                 Cost = order.Cost,
                 IsDeleted = order.IsDeleted,
-                CarDescription = order.Car.Description(),
+                Finished = order.Finished,
 
                 CarId = order.CarId,
                 WorkerId = order.WorkerId,

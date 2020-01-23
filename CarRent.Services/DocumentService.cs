@@ -18,41 +18,82 @@ namespace CarRent.Services
         private readonly IOrderRepository _orderRepository;
         private readonly IReportConverter _reportConverter;
         private readonly IReportRepository _reportRepository;
+        private readonly ICarRepository _carRepository;
+        private readonly IWorkerRepository _workerRepository;
 
         public DocumentService(IOrderConverter orderConverter, IOrderRepository orderRepository,
-                                IReportConverter reportConverter, IReportRepository reportRepository)
+                                IReportConverter reportConverter, IReportRepository reportRepository,
+                                ICarRepository carRepository, IWorkerRepository workerRepository)
         {
             _orderConverter = orderConverter;
             _orderRepository = orderRepository;
             _reportConverter = reportConverter;
             _reportRepository = reportRepository;
+            _carRepository = carRepository;
+            _workerRepository = workerRepository;
         }
         
-        /* Add to DB actions */
-        public int AddOrder(int carId, int workerId, int clientId, AddOrderDto addOrderDto)
+        public string FinishOrder(int id)
         {
+            var order = _orderRepository.Get(id);
+            var car = _carRepository.Get(order.CarId.Value);
+            var worker = _workerRepository.Get(order.WorkerId.Value);
+
+            car.WorkerId = null;
+            car.Worker = null;
+            car.IsAway = false;
+
+            worker.Car = null;
+
+            order.Finished = true;
+
+            return $"Order with id {order.Id} was successfuly finished";
+        }
+
+        /* Add to DB actions */
+        public string AddOrder(int carId, int workerId, int clientId, AddOrderDto addOrderDto)
+        {
+            if (!addOrderDto.Validate())
+            {
+                return "Validation error!";
+            }
+
             var order = _orderConverter.AddOrderDtoToOrder(addOrderDto);
+            var car = _carRepository.Get(carId);
+            var worker = _workerRepository.Get(workerId);
+
+            car.WorkerId = worker.Id;
+            car.Worker = worker;
+            car.IsAway = true;
+
+            worker.Car = car;
+
             order.CarId = carId;
             order.WorkerId = workerId;
             order.ClientId = clientId;
+            order.Finished = false;
+            order.Cost = order.RentalTime * car.PricePerDay;
+            _orderRepository.Add(order);
 
-            return _orderRepository.Add(order);
+            return $"Order with id {order.Id} was succesfuly deleted";
         }
 
-        public int AddRepairReport(int orderId, AddRepairReportDto addRepairReport)
+        public string AddRepairReport(int orderId, AddRepairReportDto addRepairReport)
         {
             var repairReport = _reportConverter.AddRepairReportDtoToRepairReport(addRepairReport);
             repairReport.OrderId = orderId;
 
-            return _reportRepository.AddRepairReport(repairReport);            
+            _reportRepository.AddRepairReport(repairReport);
+            return $"Repair report with id {repairReport.Id} was succesfuly deleted";
         }
         
-        public int AddReturnReport(int orderId, AddReturnReportDto addReturnReport)
+        public string AddReturnReport(int orderId, AddReturnReportDto addReturnReport)
         {
             var returnReport = _reportConverter.AddReturnReportDtoToReturnReport(addReturnReport);
             returnReport.OrderId = orderId;
 
-            return _reportRepository.AddReturnReport(returnReport);
+            _reportRepository.AddReturnReport(returnReport);
+            return $"Return report with id {returnReport.Id} was succesfuly deleted";
         }
 
         /* Delete from DB actions */
@@ -75,9 +116,9 @@ namespace CarRent.Services
         }
 
         /* Filter from Db actions */
-        public IEnumerable<GetOrderDto> FilterOrders(string deliveryPlace, int[] rentalTimeRange, decimal[] costRange, DateTime[] dateRange)
+        public IEnumerable<GetOrderDto> FilterOrders(string deliveryPlace, int[] rentalTimeRange, decimal[] costRange, DateTime[] dateRange, Dictionary<string, bool> finished)
         {
-            return _orderRepository.Filter(deliveryPlace, rentalTimeRange, costRange, dateRange)
+            return _orderRepository.Filter(deliveryPlace, rentalTimeRange, costRange, dateRange, finished)
                 .Select(o => _orderConverter.OrderToGetOrderDto(o));
         }
         

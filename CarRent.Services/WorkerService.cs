@@ -20,14 +20,21 @@ namespace CarRent.Services
         }
 
 
-        public int AddWorker(int coordinatorId, AddWorkerDto addWorkerDto)
+        public string AddWorker(int coordinatorId, AddWorkerDto addWorkerDto)
         {
+            if (!addWorkerDto.Validate())
+            {
+                return "Validation error!";
+            }
+
             var worker = _workerConverter.FromAddWorkerDtoToWorker(addWorkerDto);
             worker.IsDeleted = false;
             worker.CoordinatorId = coordinatorId;
 
-            return _workerRepository.Add(worker);
-            
+            _workerRepository.Add(worker);
+
+            return $"Worker with id {worker.Id} was succesfuly deleted";
+
         }
 
         public string DeleteWorker(int id)
@@ -36,9 +43,9 @@ namespace CarRent.Services
             return $"Worker with id {id} was succesfuly deleted";
         }
 
-        public IEnumerable<GetWorkerDto> FilterWorkers(Dictionary<string, string> stringQueries, int[] salaryRange)
+        public IEnumerable<GetWorkerDto> FilterWorkers(Dictionary<string, string> stringQueries, int[] salaryRange, int coordinatorId)
         {
-            return _workerRepository.Filter(stringQueries, salaryRange)
+            return _workerRepository.Filter(stringQueries, salaryRange, coordinatorId)
                 .Select(w => _workerConverter.FromWorkerToGetWorkerDto(w));
             
         }

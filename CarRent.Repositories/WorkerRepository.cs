@@ -22,7 +22,7 @@ namespace CarRent.Repositories
 
         public int Add(Worker worker)
         {
-            _db.Workers.Add(worker);
+            _db.Workers.Add(worker);            
             _db.SaveChanges();
 
             return worker.Id;
@@ -37,15 +37,24 @@ namespace CarRent.Repositories
             return worker.Id;
         }
 
-        public IEnumerable<Worker> Filter(Dictionary<string, string> stringQueries, int[] salaryRange)
+        public IEnumerable<Worker> Filter(Dictionary<string, string> stringQueries, int[] salaryRange, int coordinatorId=0)
         {
             List<Worker> duplicatesResult = new List<Worker>();
+            int queryCount = 0;
 
             if (salaryRange != null)
             {
+                queryCount++;
                 var filteredSalary = _db.Workers.Where(w => w.Salary >= salaryRange[0]
                                                         && w.Salary <= salaryRange[1]);
                 foreach (var item in filteredSalary) { duplicatesResult.Add(item); }
+            }
+
+            if (coordinatorId != 0)
+            {
+                queryCount++;
+                var filteredCoordinator = _db.Workers.Where(w => w.CoordinatorId == coordinatorId);
+                foreach (var item in filteredCoordinator) { duplicatesResult.Add(item); }
             }
 
             foreach (KeyValuePair<string, string> pair in stringQueries)
@@ -73,9 +82,20 @@ namespace CarRent.Repositories
                         break;
                 }
             }
+            
+            if (stringQueries == null) { stringQueries = new Dictionary<string, string>(); queryCount += stringQueries.Count; }
+            else { queryCount += stringQueries.Count; }
 
-            List<Worker> finalResult = duplicatesResult.Distinct().ToList();
-            return finalResult;
+            List<Worker> finalResult = new List<Worker>();
+            var grouped = duplicatesResult.GroupBy(i => i);
+            foreach (var g in grouped)
+            {
+                if (g.Count() == queryCount)
+                {
+                    finalResult.Add(g.Key);
+                }
+            }
+            return finalResult.Where(w => w.IsDeleted == false);
         }
 
         public Worker Get(int id)
@@ -85,7 +105,7 @@ namespace CarRent.Repositories
 
         public IEnumerable<Worker> GetAll()
         {
-            return _db.Workers;
+            return _db.Workers.Where(w => w.IsDeleted == false);
         }
 
         public Worker Update(int id, Worker worker)

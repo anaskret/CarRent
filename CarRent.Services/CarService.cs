@@ -18,8 +18,12 @@ namespace CarRent.Services
             _carRepository = carRepository;            
         }
 
-        public int AddCar(AddCarDto addCarDto)
+        public string AddCar(AddCarDto addCarDto)
         {
+            if (!addCarDto.Validate())
+            {
+                return "Validation error!";
+            }
             var car = _carConverter.FromAddCarDtoToCar(addCarDto);
             
             car.IsAway = false;
@@ -27,7 +31,7 @@ namespace CarRent.Services
             car.IsDeleted = false;
 
             _carRepository.Add(car);
-            return car.Id;
+            return $"Car with id {car.Id} was succesfuly deleted";
         }
 
         public GetCarDto GetCar(int id)
@@ -48,9 +52,9 @@ namespace CarRent.Services
                 .Select(c => _carConverter.FromCarToGetCarDto(c));
         }
 
-        public IEnumerable<GetCarDto> FilterCars(Dictionary<string, string> stringQueries, Dictionary<string, int[]> intQueries)
+        public IEnumerable<GetCarDto> FilterCars(Dictionary<string, string> stringQueries, Dictionary<string, int[]> intQueries, Dictionary<string, bool> isAway)
         {
-            return _carRepository.Filter(stringQueries, intQueries)
+            return _carRepository.Filter(stringQueries, intQueries, isAway)
                 .Select(c => _carConverter.FromCarToGetCarDto(c));
         }
 

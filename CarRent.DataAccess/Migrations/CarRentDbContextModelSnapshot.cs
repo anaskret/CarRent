@@ -168,6 +168,9 @@ namespace CarRent.DataAccess.Migrations
                     b.Property<string>("DeliveryPlace")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Finished")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 

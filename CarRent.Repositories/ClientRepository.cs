@@ -35,13 +35,13 @@ namespace CarRent.Repositories
             return client.Id;
         }
 
-        public IEnumerable<Client> Filter(Dictionary<string, string> stringQueries, Dictionary<string, bool> isCompany)
+        public IEnumerable<Client> Filter(Dictionary<string, string> stringQueries, Dictionary<string, bool> company)
         {
             List<Client> duplicatesResult = new List<Client>();
 
-            if (isCompany != null)
+            if (company != null)
             {
-                foreach(KeyValuePair<string, bool> pair in isCompany)
+                foreach(KeyValuePair<string, bool> pair in company)
                 {
                     switch (pair.Key)
                     {
@@ -98,9 +98,14 @@ namespace CarRent.Repositories
                         break;
                 }
             }
+            int queryCount = 0;
+            if (company == null) { company = new Dictionary<string, bool>(); queryCount += company.Count; }
+            else { queryCount += company.Count; }
+            if (stringQueries == null) { stringQueries = new Dictionary<string, string>(); queryCount += stringQueries.Count; }
+            else { queryCount += stringQueries.Count; }
 
             List<Client> finalResult = duplicatesResult.Distinct().ToList();
-            return finalResult;
+            return finalResult.Where(c => c.IsDeleted == false);
         }
 
         public Client Get(int id)
@@ -110,7 +115,7 @@ namespace CarRent.Repositories
 
         public IEnumerable<Client> GetAll()
         {
-            return _db.Clients;
+            return _db.Clients.Where(c => c.IsDeleted == false);
         }
 
         public Client Update(int id, Client client)

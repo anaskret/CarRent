@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CarRent.Models.Dtos;
+using CarRent.Models.Dtos.AddDtos;
 using CarRent.Services;
+using CarRent.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -16,6 +18,21 @@ namespace CarRent.App
         public static void SeedData()
         {
             var provider = new Dependencies().Load();
+            ICoordinatorService coordinatorService = provider.GetService<ICoordinatorService>();
+
+            if(coordinatorService.GetCoordinator(1) == null)
+            {
+                MessageBox.Show("");
+                /*var coordinator = new AddCoordinatorDto();
+
+                coordinator.Login = "admin";
+                coordinator.Password = "admin";
+                coordinator.FirstName = "admin";
+                coordinator.LastName = "admin";
+                coordinator.Email = "admin@admin.com";*/
+
+            }
+
             var carService = provider.GetService<ICarService>();
 
             if (carService.GetAllCars().ToList().Count == 0)
@@ -123,7 +140,7 @@ namespace CarRent.App
             }
 
             var clientService = provider.GetService<IClientService>();
-            if(clientService.GetAllClients().ToList().Count == 0)
+            if (clientService.GetAllClients().ToList().Count == 0)
             {
                 var client = new AddClientDto
                 {
@@ -137,7 +154,7 @@ namespace CarRent.App
                 };
 
                 clientService.AddClient(client);
-                
+
                 client.FirstName = "Karol";
                 client.LastName = "Jabłoński";
                 client.PhoneNumber = "72 731 53 07";
@@ -147,7 +164,7 @@ namespace CarRent.App
                 client.Pesel = "62020367914";
 
                 clientService.AddClient(client);
-                
+
                 client.FirstName = "Elżbieta ";
                 client.LastName = "Szczepańska";
                 client.PhoneNumber = "78 681 52 54";
@@ -157,8 +174,8 @@ namespace CarRent.App
                 client.Pesel = "93070222544";
 
                 clientService.AddClient(client)
-                    
-                    ;client.FirstName = "Angelika";
+
+                    ; client.FirstName = "Angelika";
                 client.LastName = "Maciejewska";
                 client.PhoneNumber = "53 967 04 00";
                 client.Email = "AngelikaMaciejewska@armyspy.com";
@@ -167,7 +184,7 @@ namespace CarRent.App
                 client.Pesel = "49011918485";
 
                 clientService.AddClient(client);
-                
+
                 client.FirstName = "Władysława ";
                 client.LastName = "MacMichalskaiejewska";
                 client.PhoneNumber = "51 286 32 56";
@@ -177,7 +194,7 @@ namespace CarRent.App
                 client.Pesel = "65072312901";
 
                 clientService.AddClient(client);
-                
+
                 client.FirstName = "Basia";
                 client.LastName = "Majewska";
                 client.PhoneNumber = "79 664 09 72";
@@ -187,7 +204,7 @@ namespace CarRent.App
                 client.Pesel = "79080548849";
 
                 clientService.AddClient(client);
-                
+
                 client.FirstName = "Antoni";
                 client.LastName = "Jasiński";
                 client.PhoneNumber = "53 967 04 00";
@@ -200,31 +217,33 @@ namespace CarRent.App
             }
 
             var workerService = provider.GetService<IWorkerService>();
-            if(workerService.GetAllWorkers().ToList().Count == 0)
+            if (workerService.GetAllWorkers().ToList().Count == 0)
             {
                 var worker = new AddWorkerDto
                 {
                     FirstName = "Iwona",
                     LastName = "Grabowska",
                     PhoneNumber = "78 242 89 01",
+                    Email = "iwonagrabowska@carrent.com",
                     Salary = 3500
                 };
 
-                workerService.AddWorker( worker);
+                workerService.AddWorker(worker);
 
                 worker.FirstName = "Krystiana";
                 worker.LastName = "Nowakowska";
                 worker.PhoneNumber = "60 370 59 58";
+                worker.Email = "krystiananowakowska@carrent.com";
                 worker.Salary = 200;
 
-                workerService.AddWorker( worker);
+                workerService.AddWorker(worker);
 
                 worker.FirstName = "Leokadia";
                 worker.LastName = "Grabowska";
                 worker.PhoneNumber = "72 919 13 49";
                 worker.Salary = 4000;
 
-                workerService.AddWorker( worker);
+                workerService.AddWorker(worker);
 
                 worker.FirstName = "Rościsława";
                 worker.LastName = "Kucharska";
@@ -255,6 +274,7 @@ namespace CarRent.App
                 workerService.AddWorker(worker);
 
             }
+
         }
     }
 }

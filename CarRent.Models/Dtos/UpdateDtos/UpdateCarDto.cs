@@ -19,20 +19,26 @@ namespace CarRent.Models.Dtos
         public Decimal PricePerDay { get; set; }
         public int Mileage { get; set; }
 
-        public bool ValidateCarInput(UpdateCarDto car)
+        public bool Validate()
         {
             Regex alphanumeric = new Regex("^[a-zA-Z0-9]*$");
-            if (!alphanumeric.IsMatch(car.LicensePlateNumber)
-                || !alphanumeric.IsMatch(car.Brand)
-                || !alphanumeric.IsMatch(car.Model)
-                || !alphanumeric.IsMatch(car.Engine)
-                || !alphanumeric.IsMatch(car.Color))
-                return false;
 
-            if (car.LicensePlateNumber.Length < 6 || car.Brand.Length < 1
-                || car.Model.Length < 1 || car.Engine.Length < 1
-                || car.Transmission == "" || car.Color.Length < 3)
+            if ( (!alphanumeric.IsMatch(LicensePlateNumber))
+                || (!alphanumeric.IsMatch(Brand))
+                || (!alphanumeric.IsMatch(Model))
+                || (!alphanumeric.IsMatch(Engine))                
+                || (!alphanumeric.IsMatch(Transmission))
+                || (!alphanumeric.IsMatch(FuelType))
+                || (!alphanumeric.IsMatch(Color)))
+            {
                 return false;
+            }
+
+            int currentYear = DateTime.Now.Year;
+            if (Year < (currentYear - 100) || (Year > currentYear))
+            {
+                return false;
+            }
 
             return true;
         }

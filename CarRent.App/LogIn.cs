@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarRent.App;
+using CarRent.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
+using CarRent.Services.Interfaces;
 
 namespace Project
 {
@@ -14,20 +18,17 @@ namespace Project
     {
         public LogIn()
         {
+            AddData.SeedData();
             InitializeComponent();
         }
 
-        private bool Validate(string login, string password)
-        {
-            if (login is "Jan" && password is "test")
-                return true;
-            else
-                return false;
-        }
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            if (Validate(tbLogin.Text, tbPassword.Text))
+            var provider = new Dependencies().Load();
+            var validate = provider.GetService<ICoordinatorService>();
+
+            if (validate.ValidateLogin(tbLogin.Text, tbPassword.Text))
             {
                 this.Hide();
                 CarList m = new CarList();

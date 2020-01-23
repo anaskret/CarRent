@@ -37,7 +37,6 @@ namespace Project
 
         private void AddUpdateCar_Load(object sender, EventArgs e)
         {
-            AddData.SeedData();
 
             if (isUpdate == true)
             {
@@ -85,7 +84,7 @@ namespace Project
             if (isUpdate)
             {
                 var carUpdate = UpdateCarFromForm();
-                if (!carUpdate.ValidateCarInput(carUpdate))
+                if (!carUpdate.Validate())
                 {
                     MessageBox.Show("Error! Wrong or empty value");
                     return; 
@@ -98,7 +97,7 @@ namespace Project
             else
             {
                 var carAdd = AddCarFromForm();
-                if (!carAdd.ValidateCarInput(carAdd))
+                if (!carAdd.Validate())
                 {
                     MessageBox.Show("Error! Wrong or empty value");
                     return;

@@ -79,7 +79,7 @@ namespace Project
 
             lvCarList.Items.Clear();
 
-            foreach (var item in carService.FilterCars(carFilterString, carFilterInt))
+            foreach (var item in carService.FilterCars(carFilterString, carFilterInt, null))
             {
                 if (!item.IsDeleted)
                     lvCarList.Items.Add(CarManager.ReadCarData(item));
