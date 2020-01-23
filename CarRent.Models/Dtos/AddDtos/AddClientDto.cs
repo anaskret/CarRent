@@ -18,7 +18,7 @@ namespace CarRent.Models.Dtos
         public bool Validate()
         {
 
-            Regex alphabetic = new Regex("^[a-zA-Z]+$");
+            Regex alphabetic = new Regex("^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*$");
             Regex alphanumeric = new Regex("^[a-zA-Z0-9]*$");
             Regex numeric = new Regex("^[0-9]*$");
             Regex peselPattern= new Regex("[0-9]{4}[0-3]{1}[0-9}{1}[0-9]{5}");
