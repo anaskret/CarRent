@@ -30,10 +30,8 @@ namespace Project
             if (validate.ValidateLogin(tbLogin.Text, tbPassword.Text))
             {
                 this.Hide();
-                CarList m = new CarList();
+                Menu m = new Menu();
                 m.Show();
-                ClientList c = new ClientList();
-                c.Show();
             }
             else
             { 

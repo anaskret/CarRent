@@ -25,7 +25,7 @@ namespace Project
 
         private void CarList_Load_1(object sender, EventArgs e)
         {
-            CarManager carManager = new CarManager(lvCarList);
+            _ = new CarManager(lvCarList);
 
             CarManager.CreateListView();
             CarManager.AddToListView();
@@ -34,6 +34,8 @@ namespace Project
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
+            var m = new Menu();
+            m.Show();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

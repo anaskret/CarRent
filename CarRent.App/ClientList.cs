@@ -23,7 +23,7 @@ namespace Project
 
         private void ClientList_Load(object sender, EventArgs e)
         {
-            var clientManager = new ClientManager(lvClientList);
+            _ = new ClientManager(lvClientList);
             ClientManager.CreateListView();
 
             var provider = new Dependencies().Load();
@@ -38,6 +38,8 @@ namespace Project
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
+            var m = new Menu();
+            m.Show();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
