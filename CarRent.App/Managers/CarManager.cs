@@ -48,17 +48,19 @@ namespace Project
 
         public static UpdateCarDto GetItems()
         {
-            UpdateCarDto car = new UpdateCarDto();
-            car.LicensePlateNumber = LvCarList.SelectedItems[0].SubItems[1].Text;
-            car.Brand = LvCarList.SelectedItems[0].SubItems[2].Text;
-            car.Model = LvCarList.SelectedItems[0].SubItems[3].Text;
-            car.Color = LvCarList.SelectedItems[0].SubItems[4].Text;
-            car.Mileage = Convert.ToInt32(LvCarList.SelectedItems[0].SubItems[5].Text);
-            car.Year = Convert.ToInt32(LvCarList.SelectedItems[0].SubItems[6].Text);
-            car.Engine = LvCarList.SelectedItems[0].SubItems[7].Text;
-            car.FuelType = LvCarList.SelectedItems[0].SubItems[8].Text;
-            car.Transmission = LvCarList.SelectedItems[0].SubItems[9].Text;
-            car.PricePerDay = Convert.ToDecimal(LvCarList.SelectedItems[0].SubItems[10].Text);
+            UpdateCarDto car = new UpdateCarDto
+            {
+                LicensePlateNumber = LvCarList.SelectedItems[0].SubItems[1].Text,
+                Brand = LvCarList.SelectedItems[0].SubItems[2].Text,
+                Model = LvCarList.SelectedItems[0].SubItems[3].Text,
+                Color = LvCarList.SelectedItems[0].SubItems[4].Text,
+                Mileage = Convert.ToInt32(LvCarList.SelectedItems[0].SubItems[5].Text),
+                Year = Convert.ToInt32(LvCarList.SelectedItems[0].SubItems[6].Text),
+                Engine = LvCarList.SelectedItems[0].SubItems[7].Text,
+                FuelType = LvCarList.SelectedItems[0].SubItems[8].Text,
+                Transmission = LvCarList.SelectedItems[0].SubItems[9].Text,
+                PricePerDay = Convert.ToDecimal(LvCarList.SelectedItems[0].SubItems[10].Text)
+            };
 
             return car;
         }

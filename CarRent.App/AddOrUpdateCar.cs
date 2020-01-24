@@ -23,6 +23,7 @@ namespace Project
 
         public AddOrUpdateCar(bool isUpdate)
         {
+            this.isUpdate = isUpdate;
             InitializeComponent();
         }
 

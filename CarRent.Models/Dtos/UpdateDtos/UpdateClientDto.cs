@@ -24,13 +24,13 @@ namespace CarRent.Models.Dtos
             Regex peselPattern = new Regex("[0-9]{4}[0-3]{1}[0-9}{1}[0-9]{5}");
             Regex mail = new Regex(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$");
 
-            if ((!alphabetic.IsMatch(FirstName))
-                || (!alphabetic.IsMatch(LastName))
-                || (!numeric.IsMatch(PhoneNumber))
-                || (!mail.IsMatch(Email))
-                || (!alphanumeric.IsMatch(DriversLicenseNumber))
-                || (!alphanumeric.IsMatch(IdNumber))
-                || (!peselPattern.IsMatch(Pesel)))
+            if (string.IsNullOrEmpty(FirstName) || (!alphabetic.IsMatch(FirstName))
+                || string.IsNullOrEmpty(LastName) || (!alphabetic.IsMatch(LastName))
+                || string.IsNullOrEmpty(PhoneNumber) || (!numeric.IsMatch(PhoneNumber))
+                || string.IsNullOrEmpty(Email) || (!mail.IsMatch(Email))
+                || string.IsNullOrEmpty(DriversLicenseNumber) || (!alphanumeric.IsMatch(DriversLicenseNumber))
+                || string.IsNullOrEmpty(IdNumber) || (!alphanumeric.IsMatch(IdNumber))
+                || string.IsNullOrEmpty(Pesel) || (!peselPattern.IsMatch(Pesel)))
             {
                 return false;
             }
