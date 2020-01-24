@@ -57,10 +57,10 @@ namespace CarRent.App
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Niestety baza wyrzuca bład, z którym nie potrafimy sobie poradzić. i ta sekcja jest nie dostępna");
-            //this.Hide();
-            //OrdersList ol = new OrdersList();
-            //ol.Show();
+            //MessageBox.Show("Niestety baza wyrzuca bład, z którym nie potrafimy sobie poradzić. i ta sekcja jest nie dostępna");
+            this.Hide();
+            OrdersList ol = new OrdersList();
+            ol.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

@@ -41,12 +41,20 @@ namespace CarRent.Repositories
 
         public bool ValidateLogin(string login, string password)
         {
-            var coordinator = _db.Coordinators.First(c => c.Login == login);
-            if (coordinator != null)
+            try
             {
-                if (coordinator.Password == password) { return true; }              
+                var coordinator = _db.Coordinators.First(c => c.Login == login);
+                if (coordinator != null)
+                {
+                    if (coordinator.Password == password) { return true; }
+                }
+                return false;
             }
-            return false;
+            catch (InvalidOperationException e)
+            {
+                return false;
+            }
+            
         }
     }
 }

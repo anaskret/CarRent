@@ -45,7 +45,7 @@ namespace Project
                 tbxLicensePlate.Text = car.LicensePlateNumber;
                 tbxBrand.Text = car.Brand;
                 tbxModel.Text = car.Model;
-                tbColor.Text = car.Color;
+                tbxColor.Text = car.Color;
                 numUpDownMileage.Value = car.Mileage;
                 numUpDownYear.Value = car.Year;
                 tbxEngine.Text = car.Engine;
@@ -66,7 +66,8 @@ namespace Project
                 else cbxTransmission.SelectedIndex = 1;
 
                 numUpDownPricePerDay.Value = (int)car.PricePerDay;
-                numUpDownPricePerDayAfterComa.Value = Convert.ToInt32(Math.Truncate(car.PricePerDay));
+                decimal decimalPrice = Math.Truncate(car.PricePerDay);
+                numUpDownPricePerDayAfterComa.Value = decimalPrice - car.PricePerDay;
             }
         }
         private void btnBack_Click(object sender, EventArgs e)
@@ -143,7 +144,7 @@ namespace Project
             updateCar.LicensePlateNumber = tbxLicensePlate.Text;
             updateCar.Brand = tbxBrand.Text;
             updateCar.Model = tbxModel.Text;
-            updateCar.Color = tbColor.Text;
+            updateCar.Color = tbxColor.Text;
             updateCar.Mileage = Convert.ToInt32(numUpDownMileage.Value);
             updateCar.Year = Convert.ToInt32(numUpDownYear.Value);
             updateCar.Engine = tbxEngine.Text;
@@ -152,47 +153,6 @@ namespace Project
             updateCar.PricePerDay = price;
 
             return updateCar;
-        }
-
-
-        private bool AllFilled()
-        {
-            if (tbxLicensePlate.TextLength < 6)
-            {
-                MessageBox.Show("Type License Plate Number");
-                return false; 
-            }
-            if(tbxBrand.TextLength < 2)
-            {
-                MessageBox.Show("Type Brand");
-                return false;
-            }
-            if(tbxModel.TextLength < 2)
-            {
-                MessageBox.Show("Type Model");
-                return false;
-            }
-            if(tbxEngine.TextLength == 0)
-            {
-                MessageBox.Show("Type Engine");
-                return false;
-            }
-            if(cbxTransmission.SelectedItem == null)
-            {
-                MessageBox.Show("Choose Transmission Type");
-                return false;
-            }
-            if(tbxColor.TextLength < 3 )
-            {
-                MessageBox.Show("Type Color");
-                return false;
-            }
-            if (rbtnDiesel.Checked == false && rbtnGas.Checked == false && rbtnGasoline.Checked == false)
-            {
-                MessageBox.Show("Choose Fuel Type");
-                return false;
-            }
-            return true;
         }
 
 

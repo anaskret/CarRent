@@ -96,8 +96,6 @@ namespace CarRent.App
         public static void LoadDataToWorkerListView(IEnumerable<GetOrderDto> data)
         {
             string[] arr = new string[8];
-            var test = data.ToList();
-            MessageBox.Show(test.Count()+"");
             foreach (var obj in data)
             {  
                 arr[0] = obj.Id + "";
