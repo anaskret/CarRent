@@ -23,13 +23,22 @@ namespace CarRent.Models.Dtos
         {
             Regex alphanumeric = new Regex("^[a-zA-Z0-9]*$");
 
-            if ( (!alphanumeric.IsMatch(LicensePlateNumber))
-                || (!alphanumeric.IsMatch(Brand))
-                || (!alphanumeric.IsMatch(Model))
-                || (!alphanumeric.IsMatch(Engine))                
-                || (!alphanumeric.IsMatch(Transmission))
-                || (!alphanumeric.IsMatch(FuelType))
-                || (!alphanumeric.IsMatch(Color)))
+            LicensePlateNumber = LicensePlateNumber.Trim();
+            Brand = Brand.Trim();
+            Model = Model.Trim();
+            Engine = Engine.Trim();
+            Color = Color.Trim();
+
+            if (string.IsNullOrEmpty(LicensePlateNumber) || (!alphanumeric.IsMatch(LicensePlateNumber))
+                || string.IsNullOrEmpty(Brand) || (!alphanumeric.IsMatch(Brand))
+                || string.IsNullOrEmpty(Model) || (!alphanumeric.IsMatch(Model))
+                || string.IsNullOrEmpty(Engine) || (!alphanumeric.IsMatch(Engine))
+                || string.IsNullOrEmpty(Year.ToString())
+                || string.IsNullOrEmpty(Transmission) || (!alphanumeric.IsMatch(Transmission))
+                || string.IsNullOrEmpty(FuelType) || (!alphanumeric.IsMatch(FuelType))
+                || string.IsNullOrEmpty(Color) || (!alphanumeric.IsMatch(Color))
+                || string.IsNullOrEmpty(PricePerDay.ToString())
+                || string.IsNullOrEmpty(Mileage.ToString()))
             {
                 return false;
             }

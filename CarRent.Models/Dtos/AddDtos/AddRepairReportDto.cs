@@ -17,6 +17,8 @@ namespace CarRent.Models.Dtos.AddDtos
             Regex alphabetic = new Regex(@"^[\s\p{L}]+$");
             Regex numeric = new Regex("^[0-9]*$");
 
+            Description = Description.Trim();
+
             if (string.IsNullOrEmpty(Description.ToString())
                 || string.IsNullOrEmpty(Cost.ToString()) || (!numeric.IsMatch(Cost.ToString()))
                 || string.IsNullOrEmpty(Time.ToString()) || (!alphabetic.IsMatch(Time.ToString())))

@@ -106,7 +106,7 @@ namespace CarRent.App
                 carService.AddCar(car);
                 car.LicensePlateNumber = "PO6WM23";
                 car.Brand = "Mercedes";
-                car.Model = "A Klasa";
+                car.Model = "AKlasa";
                 car.Color = "Silver";
                 car.Engine = "V10";
                 car.FuelType = "Gasoline";
@@ -153,7 +153,7 @@ namespace CarRent.App
                    {
                        FirstName = "Angelika",
                        LastName = "Maciejewska",
-                       PhoneNumber = "53 967 04 00",
+                       PhoneNumber = "539670400",
                        Email = "AngelikaMaciejewska@armyspy.com",
                        DriversLicenseNumber = "45809765",
                        IdNumber = "824997591",

@@ -68,7 +68,8 @@ namespace Project
 
                 numUpDownPricePerDay.Value = (int)car.PricePerDay;
                 decimal decimalPrice = Math.Truncate(car.PricePerDay);
-                numUpDownPricePerDayAfterComa.Value = decimalPrice - car.PricePerDay;
+                decimal price= car.PricePerDay - decimalPrice;
+                numUpDownPricePerDayAfterComa.Value = price*100;
             }
         }
         private void btnBack_Click(object sender, EventArgs e)

@@ -23,6 +23,12 @@ namespace CarRent.Models.Dtos
         {
             Regex alphanumeric = new Regex(@"^[\s\p{L}0-9]+$");
 
+            LicensePlateNumber = LicensePlateNumber.Trim();
+            Brand = Brand.Trim();
+            Model = Model.Trim();
+            Engine = Engine.Trim();
+            Color = Color.Trim();
+
             if (string.IsNullOrEmpty(LicensePlateNumber) || (!alphanumeric.IsMatch(LicensePlateNumber))
                 || string.IsNullOrEmpty(Brand) || (!alphanumeric.IsMatch(Brand))
                 || string.IsNullOrEmpty(Model) || (!alphanumeric.IsMatch(Model))

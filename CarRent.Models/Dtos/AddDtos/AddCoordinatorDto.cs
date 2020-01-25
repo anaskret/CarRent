@@ -22,6 +22,10 @@ namespace CarRent.Models.Dtos.AddDtos
             Regex numeric = new Regex("^[0-9]*$");
             Regex mail = new Regex(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$");
 
+            FirstName = FirstName.Trim();
+            LastName = LastName.Trim();
+            PhoneNumber = PhoneNumber.Trim();
+
             if (string.IsNullOrEmpty(Login)
                 || string.IsNullOrEmpty(Password)
                 || string.IsNullOrEmpty(FirstName) || (!alphabetic.IsMatch(FirstName))
